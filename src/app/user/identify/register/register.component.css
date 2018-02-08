@@ -1,0 +1,21 @@
+/*#image1 {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  width: 200px;
+  height: 100px
+}
+
+#image2 {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  width: 200px;
+  height: 100px
+}*/
+
+.advertisement {
+  text-align: center;
+  font-family: "YouYuan";
+  font-size: 30px;
+}
