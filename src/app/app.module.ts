@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
-import { HttpModule } from '@angular/http';
+import {HttpModule} from '@angular/http';
 
 import {Router} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 
-import { AlertModule } from 'ngx-bootstrap';
+import {AlertModule} from 'ngx-bootstrap';
 import {IdentifyModule} from './user/identify/identify.module';
 
 
@@ -26,4 +26,5 @@ import {IdentifyModule} from './user/identify/identify.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

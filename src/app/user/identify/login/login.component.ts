@@ -4,22 +4,22 @@ import {IdentifyService} from 'app/user/identify/identify.service';
 
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  
 
-	  constructor(private identifyService: IdentifyService, private router: Router) {
+
+  constructor(private identifyService: IdentifyService, private router: Router) {
   }
 
   ngOnInit() {
-  	console.log("3e344");
-  	this.identifyService.doRegister();
-   
+    console.log('3e344');
+    this.identifyService.doRegister();
+
 
   }
 
-  
+
 }

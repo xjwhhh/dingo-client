@@ -1,0 +1,3 @@
+export enum ShowType {
+  VOCALCONCERT, CONCERT, DANCE, SPORT, ACG, DRAMA, OPEAR
+}

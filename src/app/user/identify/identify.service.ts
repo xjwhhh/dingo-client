@@ -10,12 +10,12 @@ export class IdentifyService {
   constructor(private http: Http, private router: Router) {
   }
 
-    private handleError(error: any): Promise<any> {
+  private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
-	  private getUserSharesUrl = 'http://localhost:8080/user/register';
+  private getUserSharesUrl = 'http://localhost:8080/user/register';
 
   doRegister(): Promise<ResultMessage> {
     return this.http.get(this.getUserSharesUrl)

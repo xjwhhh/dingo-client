@@ -11,8 +11,8 @@ const IdentifyRoutes: Routes = [{
   component: IdentifyComponent,
   children: [
     {
-    path: '',
-    component: LoginComponent,
+      path: '',
+      component: LoginComponent,
     },
     {
       path: 'login',
@@ -22,7 +22,7 @@ const IdentifyRoutes: Routes = [{
       path: 'register',
       component: RegisterComponent,
     },
-    ]
+  ]
 },];
 
 @NgModule({

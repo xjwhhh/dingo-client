@@ -8,18 +8,18 @@ import {
 
 
 const routes: Routes = [
-{
-  path: '',
-  redirectTo: '/',
-  pathMatch: 'full'
-},
-{
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full'
+  },
+  {
     path: 'identify',
     loadChildren: 'app/user/identify/identify.module#IdentifyModule',
     data: {
       preload: true
     }
-},
+  },
 ];
 
 @NgModule({

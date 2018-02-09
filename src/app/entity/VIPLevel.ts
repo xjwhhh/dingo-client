@@ -1,0 +1,3 @@
+export enum VIPLevel {
+  COMMON, BRONZE, SILVER, GOLDEN, PLANTUM, DIAMOND
+}

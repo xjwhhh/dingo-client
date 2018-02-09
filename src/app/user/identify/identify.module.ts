@@ -8,8 +8,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {IdentifyComponent} from './identify.component';
 import {IdentifyRoutingModule} from './identify-routing.module';
-
-
+import {UserInfoComponent} from './userinfo/userinfo.component';
 
 
 @NgModule({
@@ -21,6 +20,7 @@ import {IdentifyRoutingModule} from './identify-routing.module';
     RegisterComponent,
     LoginComponent,
     IdentifyComponent,
+    UserInfoComponent,
   ],
   providers: [IdentifyService],
   bootstrap: [IdentifyComponent]
