@@ -4,6 +4,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {IdentifyComponent} from './identify.component';
+import {UserInfoComponent} from './userinfo/userInfo.component';
+import {UserBasicInfoComponent} from './userinfo/basicinfo/basicinfo.component';
+import {UserOrderInfoComponent} from './userinfo/orderinfo/orderInfo.component';
+import {UserStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsInfo.component';
 
 
 const IdentifyRoutes: Routes = [{
@@ -22,6 +26,24 @@ const IdentifyRoutes: Routes = [{
       path: 'register',
       component: RegisterComponent,
     },
+    {
+      path: 'userInfo',
+      component: UserInfoComponent,
+      children: [
+        {
+          path: 'basicInfo',
+          component: UserBasicInfoComponent,
+        },
+        {
+          path: 'orderInfo',
+          component: UserOrderInfoComponent,
+        },
+        {
+          path: 'statisticsInfo',
+          component: UserStatisticsInfoComponent,
+        }
+      ]
+    }
   ]
 },];
 

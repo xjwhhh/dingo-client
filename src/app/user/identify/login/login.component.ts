@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
-import {IdentifyService} from 'app/user/identify/identify.service';
+import {IdentifyService} from '../identify.service';
+import {User} from '../../../entity/user';
 
 
 @Component({
@@ -16,9 +17,31 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log('3e344');
-    this.identifyService.doRegister();
 
 
+  }
+
+
+  login(account: string, password: string) {
+    if (account === '') {
+      alert('未输入用户名');
+    } else if (password === '') {
+      alert('未输入密码');
+    } else {
+      this.identifyService.login(account, password).then(user => this.check(user));
+    }
+  }
+
+  check(user: User) {
+    if (user.id == null) {
+      alert('用户名或密码错误');
+    } else {
+      alert('登录成功');
+    }
+  }
+
+  gotoRegister() {
+    this.router.navigate(['/identify/register']);
   }
 
 
