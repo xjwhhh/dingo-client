@@ -1,4 +1,5 @@
 import {Ticket} from './ticket';
+import {OrderState} from './orderstate';
 
 export class Order {
   id: number;
@@ -7,9 +8,9 @@ export class Order {
   showId: number;
   cost: number;
   orderTime: string;
-  idPaid: boolean;
+  ticketConfirmedTime: string;
   payTime: string;
-  isCancelled: boolean;
   cancelTime: string;
+  state: OrderState;
   ticketList: Ticket[];
 }

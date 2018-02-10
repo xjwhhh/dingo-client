@@ -1,0 +1,3 @@
+export enum OrderState {
+  UNPAID, UNTICKETCONFIRMED, UNSTART, END, CANCELLED
+}

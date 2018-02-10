@@ -3,6 +3,8 @@ import {Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Router} from '@angular/router';
 import {User} from '../../entity/user';
+import {OrderState} from '../../entity/orderstate';
+import {Order} from '../../entity/order';
 
 @Injectable()
 export class IdentifyService {
@@ -12,6 +14,8 @@ export class IdentifyService {
 
   private registerUrl = 'http://localhost:8080/user/register';
   private loginUrl = 'http://localhost:8080/user/login';
+  private getUserBasicInfoUrl = '';
+  private getUserOrderUrl = '';
 
 
   constructor(private http: Http, private router: Router) {
@@ -40,6 +44,25 @@ export class IdentifyService {
     return this.http.post(this.loginUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as User)
+      .catch(this.handleError);
+  }
+
+  getUserBasicInfo(userId: number): Promise<User> {
+    const data = new URLSearchParams();
+    data.append('userId', userId + '');
+    return this.http.post(this.getUserBasicInfoUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as User)
+      .catch(this.handleError);
+  }
+
+  getUserOrder(userId: number, orderState: OrderState): Promise<Order[]> {
+    const data = new URLSearchParams();
+    data.append('userId', userId + '');
+    data.append('orderState', orderState + '');
+    return this.http.post(this.getUserOrderUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as Order[])
       .catch(this.handleError);
   }
 

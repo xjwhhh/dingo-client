@@ -5,11 +5,11 @@ import {AppComponent} from './app.component';
 
 import {HttpModule} from '@angular/http';
 
-import {Router} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AlertModule} from 'ngx-bootstrap';
 import {IdentifyModule} from './user/identify/identify.module';
+import {ShowModule} from './user/show/show.module';
 
 
 @NgModule({
@@ -21,6 +21,7 @@ import {IdentifyModule} from './user/identify/identify.module';
     HttpModule,
     AppRoutingModule,
     IdentifyModule,
+    ShowModule,
     AlertModule.forRoot()
   ],
   providers: [],

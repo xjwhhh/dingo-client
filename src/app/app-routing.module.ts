@@ -5,13 +5,17 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-
+import {ShowComponent} from './user/show/show.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/',
     pathMatch: 'full'
+  },
+  {
+    path: 'show/:type/:userId',
+    component: ShowComponent,
   },
   {
     path: 'identify',
