@@ -1,33 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {ShowService} from './show.service';
+import {VenueShowService} from './show.service';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Show} from '../../entity/show';
 
 @Component({
-  selector: 'app-show',
+  selector: 'app-venue-show',
   templateUrl: './show.component.html',
   // styleUrls: ['./show.component.css'],
 })
-export class ShowComponent implements OnInit {
+export class VenueShowComponent implements OnInit {
 
   userId: number;
   showType: string;
   showList: Show[];
 
-  constructor(private showService: ShowService,
+  constructor(private showService: VenueShowService,
               private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.userId = params['userId'];
-      this.showType = params['type'];
-    });
-    // this.showType = this.route.snapshot.params['type'];
-    console.log(this.userId);
-    console.log(this.showType);
-    this.showService.setUserId(this.userId);
   }
 
   getShowList() {

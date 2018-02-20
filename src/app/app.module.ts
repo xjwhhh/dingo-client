@@ -10,6 +10,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AlertModule} from 'ngx-bootstrap';
 import {IdentifyModule} from './user/identify/identify.module';
 import {ShowModule} from './user/show/show.module';
+import {VenueIdentifyModule} from './venue/identify/identify.module';
+import {TicketManagerIdentifyModule} from './ticketmanager/identify/identify.module';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {ShowModule} from './user/show/show.module';
     AppRoutingModule,
     IdentifyModule,
     ShowModule,
+    VenueIdentifyModule,
+    TicketManagerIdentifyModule,
     AlertModule.forRoot()
   ],
   providers: [],

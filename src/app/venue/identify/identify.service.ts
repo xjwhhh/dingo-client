@@ -6,17 +6,20 @@ import {User} from '../../entity/user';
 import {OrderState} from '../../entity/orderstate';
 import {Order} from '../../entity/order';
 import {ResultMessage} from '../../entity/resultmessage';
+import {Venue} from '../../entity/venue';
 
 @Injectable()
-export class IdentifyService {
+export class VenueIdentifyService {
 
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
-  private registerUrl = 'http://localhost:8080/user/register';
-  private loginUrl = 'http://localhost:8080/user/login';
-  private getUserBasicInfoUrl = 'http://localhost:8080/user/getUserById';
-  private getUserOrderUrl = 'http://localhost:8080/order/getOrderByUserId';
+  private registerUrl = 'http://localhost:8080/venue/register';
+  private loginUrl = 'http://localhost:8080/venue/login';
+  private getVenueBasicInfoUrl = 'http://localhost:8080/venue/getVenueById';
+  private getVenueOrderUrl = 'http://localhost:8080/order/getOrderByVenueId';
+  private getUserBasicInfoUrl = '';
+  private getUserOrderUrl = '';
 
 
   constructor(private http: Http, private router: Router) {
@@ -38,30 +41,30 @@ export class IdentifyService {
   }
 
 
-  login(account: string, password: string): Promise<User> {
+  login(account: string, password: string): Promise<Venue> {
     const data = new URLSearchParams();
     data.append('account', account);
     data.append('password', password);
     return this.http.post(this.loginUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as User)
+      .then(response => response.json() as Venue)
       .catch(this.handleError);
   }
 
-  getUserBasicInfo(userId: number): Promise<User> {
+  getVenueBasicInfo(venueId: number): Promise<Venue> {
     const data = new URLSearchParams();
-    data.append('userId', userId + '');
-    return this.http.post(this.getUserBasicInfoUrl, data, this.options)
+    data.append('venueId', venueId + '');
+    return this.http.post(this.getVenueBasicInfoUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as User)
+      .then(response => response.json() as Venue)
       .catch(this.handleError);
   }
 
-  getUserOrder(userId: number, orderState: OrderState): Promise<Order[]> {
+  getVenueOrder(venueId: number, orderState: OrderState): Promise<Order[]> {
     const data = new URLSearchParams();
-    data.append('userId', userId + '');
+    data.append('venueId', venueId + '');
     data.append('orderState', orderState + '');
-    return this.http.post(this.getUserOrderUrl, data, this.options)
+    return this.http.post(this.getVenueOrderUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Order[])
       .catch(this.handleError);

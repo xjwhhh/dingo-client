@@ -8,6 +8,7 @@ export class User {
     isConfirmed: boolean;
     name: string;
     level: VIPLevel;
+    balance: number;
     totalIntegral: number;
     currentIntegral: number;
     isCancelled: boolean;

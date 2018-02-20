@@ -1,3 +1,3 @@
-export class ResultMessage {
-  result: string;
+export enum ResultMessage {
+  SUCCESS, FAIL
 }

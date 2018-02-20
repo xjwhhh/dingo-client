@@ -12,5 +12,6 @@ export class Show {
   totalSeats: number;
   currentSeats: number;
   progressType: ProgressType;
+  earning: number;
   seatList: ShowSeat[];
 }

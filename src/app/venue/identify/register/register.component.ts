@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {IdentifyService} from '../identify.service';
+import {VenueIdentifyService} from '../identify.service';
 import {User} from '../../../entity/user';
 import {ResultMessage} from '../../../entity/resultmessage';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-venue-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class VenueRegisterComponent {
 
-  constructor(private router: Router, private identifyService: IdentifyService) {
+  constructor(private router: Router, private identifyService: VenueIdentifyService) {
   }
 
   register(account: string, password: string, ensurePassword: string) {

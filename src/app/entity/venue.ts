@@ -7,5 +7,6 @@ export class Venue {
   password: string;
   name: string;
   address: string;
+  balance: number;
   seatList: Seat[];
 }
