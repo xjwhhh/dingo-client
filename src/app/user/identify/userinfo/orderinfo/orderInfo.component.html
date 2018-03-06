@@ -1,27 +1,44 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <label>待支付</label>
+      <label (click)="getUserOrder('unPaid')">待支付</label>
     </div>
     <div class="col-md-2">
-      <label>待开票</label>
+      <label (click)="getUserOrder('unTicketConfirmed')">待开票</label>
     </div>
     <div class="col-md-2">
-      <label>待开场</label>
+      <label (click)="getUserOrder('unStart')">待开场</label>
     </div>
     <div class="col-md-2">
-      <label>已结束</label>
+      <label (click)="getUserOrder('end')">已结束</label>
     </div>
     <div class="col-md-2">
-      <label>退订</label>
+      <label (click)="getUserOrder('cancelled')">退订</label>
     </div>
   </div>
 
   <div class="row">
     <div *ngFor="let order of orderList">
-
+      <div class="row">
+        <div class="col-md-3">
+          <label>订单ID:{{order.id}}</label>
+        </div>
+        <div class="col-md-3">
+          <label>场馆:{{order.venueId}}</label>
+        </div>
+        <div class="col-md-3">
+          <label>演出:{{order.showId}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label>价格:{{order.cost}}</label>
+        </div>
+        <div class="col-md-3">
+          <label>时间:{{order.orderTime}}</label>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>
 

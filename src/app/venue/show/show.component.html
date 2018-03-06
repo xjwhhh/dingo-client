@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2" (click)="getShowList('undetermined')" )><label>未批准</label></div>
+    <div class="col-md-2" (click)="getShowList('preSale')"><label>预售</label></div>
+    <div class="col-md-2" (click)="getShowList('start')"><label>开场</label></div>
+    <div class="col-md-2" (click)="getShowList('end')"><label>结束</label></div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div *ngFor="let show of showList">
+    <div class="row">
+      <label>演出ID</label>
+    </div>
+    <div class="row">
+      <label>演出名称</label>
+    </div>
+    <div class="row">
+      <label>演出时间</label>
+    </div>
+  </div>
+
+</div>

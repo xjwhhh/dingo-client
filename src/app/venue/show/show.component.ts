@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VenueShowService} from './show.service';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Show} from '../../entity/show';
+import {ProgressType} from '../../entity/progresstype';
 
 @Component({
   selector: 'app-venue-show',
@@ -11,7 +12,7 @@ import {Show} from '../../entity/show';
 export class VenueShowComponent implements OnInit {
 
   userId: number;
-  showType: string;
+  showType: ProgressType;
   showList: Show[];
 
   constructor(private showService: VenueShowService,
@@ -22,8 +23,22 @@ export class VenueShowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getShowList() {
-    this.showList = [];
+  getShowList(showTypeString: string) {
+    switch (showTypeString) {
+      case 'undetermined' :
+        this.showType = ProgressType.UNDETERMINED;
+        break;
+      case 'preSale' :
+        this.showType = ProgressType.UNDETERMINED;
+        break;
+      case 'start' :
+        this.showType = ProgressType.UNDETERMINED;
+        break;
+      case 'end' :
+        this.showType = ProgressType.UNDETERMINED;
+        break;
+    }
+    this.showService.getShowByType(this.showType).then(showList => this.showList = showList);
   }
 
 

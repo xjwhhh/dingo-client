@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import {Router} from '@angular/router';
 import {Show} from '../../entity/show';
 import {ResultMessage} from '../../entity/resultmessage';
+import {ProgressType} from '../../entity/progresstype';
 
 @Injectable()
 export class VenueShowService {
@@ -45,9 +46,9 @@ export class VenueShowService {
       .catch(this.handleError);
   }
 
-  getShowByType(showType: string): Promise<Show[]> {
+  getShowByType(showType: ProgressType): Promise<Show[]> {
     const data = new URLSearchParams();
-    data.append('showType', showType);
+    data.append('showType', showType + '');
     return this.http.post(this.getShowByTypeUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Show[])
@@ -67,7 +68,7 @@ export class VenueShowService {
     const data = new URLSearchParams();
     const showJson = '';
     // todo
-    data.append('showJson',  showJson);
+    data.append('showJson', showJson);
     return this.http.post(this.publishShowUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Show[])

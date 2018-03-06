@@ -22,7 +22,6 @@ export class ShowService {
   private cancelOrderUrl = 'http://localhost:8080/order/cancel';
 
 
-
   constructor(private http: Http, private router: Router) {
   }
 
@@ -102,9 +101,6 @@ export class ShowService {
       .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
-
-
-
 
 
 }

@@ -11,7 +11,7 @@ import {VenueStatisticsInfoComponent} from './venueinfo/statisticsinfo/statistic
 
 
 const IdentifyRoutes: Routes = [{
-  path: 'identify',
+  path: 'venueIdentify',
   component: VenueIdentifyComponent,
   children: [
     {

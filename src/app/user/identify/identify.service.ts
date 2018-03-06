@@ -9,7 +9,7 @@ import {ResultMessage} from '../../entity/resultmessage';
 
 @Injectable()
 export class IdentifyService {
-
+  userId: number;
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
@@ -25,6 +25,14 @@ export class IdentifyService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
+  }
+
+  setUserId(userId: number) {
+    this.userId = userId;
+  }
+
+  getUserId() {
+    return this.userId;
   }
 
   register(account: string, password: string): Promise<ResultMessage> {

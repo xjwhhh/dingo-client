@@ -9,7 +9,7 @@ import {TicketManagerStatisticsInfoComponent} from './userinfo/statisticsinfo/st
 
 
 const IdentifyRoutes: Routes = [{
-  path: 'identify',
+  path: 'TicketManagerIdentify',
   component: TicketManagerIdentifyComponent,
   children: [
     {
