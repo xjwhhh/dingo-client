@@ -8,6 +8,7 @@ import {
 import {ShowComponent} from './user/show/show.component';
 import {VenueIdentifyComponent} from './venue/identify/identify.component';
 import {TicketManagerIdentifyComponent} from './ticketmanager/identify/identify.component';
+import {TicketManagerComponent} from './ticketmanager/ticketManager.component';
 
 const routes: Routes = [
   {

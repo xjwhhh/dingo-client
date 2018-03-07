@@ -29,7 +29,7 @@ export class VenueRegisterComponent {
   }
 
   gotoLogin() {
-    this.router.navigate(['/identify/register']);
+    this.router.navigate(['/venueIdentify/login']);
   }
 
   // 看是否创建成功

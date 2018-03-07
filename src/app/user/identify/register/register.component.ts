@@ -29,7 +29,7 @@ export class RegisterComponent {
   }
 
   gotoLogin() {
-    this.router.navigate(['/identify/register']);
+    this.router.navigate(['/identify/login']);
   }
 
   // 看是否创建成功

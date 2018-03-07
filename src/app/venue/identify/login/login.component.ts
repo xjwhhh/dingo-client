@@ -42,7 +42,7 @@ export class VenueLoginComponent implements OnInit {
   }
 
   gotoRegister() {
-    this.router.navigate(['/identify/register']);
+    this.router.navigate(['/venueIdentify/register']);
   }
 
 

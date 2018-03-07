@@ -9,7 +9,7 @@ import {TicketManagerStatisticsInfoComponent} from './userinfo/statisticsinfo/st
 
 
 const IdentifyRoutes: Routes = [{
-  path: 'TicketManagerIdentify',
+  path: 'ticketManagerIdentify',
   component: TicketManagerIdentifyComponent,
   children: [
     {
@@ -35,7 +35,8 @@ const IdentifyRoutes: Routes = [{
       ]
     }
   ]
-},];
+},
+];
 
 @NgModule({
   imports: [
