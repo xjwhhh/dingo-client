@@ -16,5 +16,5 @@ import {TicketManagerSettleService} from './settle.service';
   providers: [TicketManagerSettleService],
   bootstrap: [TicketManagerSettleComponent]
 })
-export class TicketManagerExamineModule {
+export class TicketManagerSettleModule {
 }

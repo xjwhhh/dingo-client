@@ -9,7 +9,6 @@ import {TicketManagerLoginComponent} from './login/login.component';
 import {TicketManagerIdentifyComponent} from './identify.component';
 import {TicketManagerInfoComponent} from './userinfo/userInfo.component';
 import {TicketManagerBasicInfoComponent} from './userinfo/basicinfo/basicinfo.component';
-import {TicketManagerStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsInfo.component';
 
 @NgModule({
   imports: [
@@ -21,7 +20,6 @@ import {TicketManagerStatisticsInfoComponent} from './userinfo/statisticsinfo/st
     TicketManagerIdentifyComponent,
     TicketManagerInfoComponent,
     TicketManagerBasicInfoComponent,
-    TicketManagerStatisticsInfoComponent
   ],
   providers: [TicketManagerIdentifyService],
   bootstrap: [TicketManagerIdentifyComponent]

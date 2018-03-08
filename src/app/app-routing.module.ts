@@ -8,6 +8,8 @@ import {
 import {ShowComponent} from './user/show/show.component';
 import {VenueIdentifyComponent} from './venue/identify/identify.component';
 import {TicketManagerIdentifyComponent} from './ticketmanager/identify/identify.component';
+import {TicketManagerExamineComponent} from './ticketmanager/examine/examine.component';
+import {TicketManagerSettleComponent} from './ticketmanager/settle/settle.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,14 @@ const routes: Routes = [
   {
     path: 'ticketManagerIdentify',
     component: TicketManagerIdentifyComponent,
+  },
+  {
+    path: 'ticketManagerExamine',
+    component: TicketManagerExamineComponent,
+  },
+  {
+    path: 'ticketManagerSettle',
+    component: TicketManagerSettleComponent,
   }
 ];
 

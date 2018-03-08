@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {TicketManagerSettleComponent} from './settle.component';
 
 const IdentifyRoutes: Routes = [{
-  path: 'settle',
+  path: 'ticketManagerSettle',
   component: TicketManagerSettleComponent,
 },
 ];

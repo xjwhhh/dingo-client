@@ -14,6 +14,8 @@ import {IdentifyModule} from './user/identify/identify.module';
 import {ShowModule} from './user/show/show.module';
 import {VenueIdentifyModule} from './venue/identify/identify.module';
 import {TicketManagerIdentifyModule} from './ticketmanager/identify/identify.module';
+import {TicketManagerSettleModule} from './ticketmanager/settle/settle.module';
+import {TicketManagerExamineModule} from './ticketmanager/examine/examine.module';
 
 // import {TicketManagerModule} from './ticketmanager/ticketManager.module';
 
@@ -30,6 +32,8 @@ import {TicketManagerIdentifyModule} from './ticketmanager/identify/identify.mod
     ShowModule,
     VenueIdentifyModule,
     TicketManagerIdentifyModule,
+    TicketManagerExamineModule,
+    TicketManagerSettleModule,
     AlertModule.forRoot()
   ],
   providers: [AppService],

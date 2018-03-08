@@ -5,17 +5,15 @@ import {TicketManagerLoginComponent} from './login/login.component';
 import {TicketManagerIdentifyComponent} from './identify.component';
 import {TicketManagerInfoComponent} from './userinfo/userInfo.component';
 import {TicketManagerBasicInfoComponent} from './userinfo/basicinfo/basicinfo.component';
-import {TicketManagerStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsInfo.component';
-
 
 const IdentifyRoutes: Routes = [{
   path: 'ticketManagerIdentify',
   component: TicketManagerIdentifyComponent,
   children: [
-    // {
-    //   path: '',
-    //   component: TicketManagerLoginComponent,
-    // },
+    {
+      path: '',
+      component: TicketManagerLoginComponent,
+    },
     {
       path: 'log',
       component: TicketManagerLoginComponent,
@@ -27,10 +25,6 @@ const IdentifyRoutes: Routes = [{
         {
           path: 'basicInfo',
           component: TicketManagerBasicInfoComponent,
-        },
-        {
-          path: 'statisticsInfo',
-          component: TicketManagerStatisticsInfoComponent,
         }
       ]
     }

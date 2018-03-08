@@ -5,7 +5,7 @@ import {TicketManagerExamineRegisterComponent} from './register/register.compone
 import {TicketManagerExamineUpdateComponent} from './update/update.component';
 
 const IdentifyRoutes: Routes = [{
-  path: 'examine',
+  path: 'ticketManagerExamine',
   component: TicketManagerExamineComponent,
   children: [
     {
