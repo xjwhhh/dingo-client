@@ -12,12 +12,12 @@ const IdentifyRoutes: Routes = [{
   path: 'ticketManagerIdentify',
   component: TicketManagerIdentifyComponent,
   children: [
+    // {
+    //   path: '',
+    //   component: TicketManagerLoginComponent,
+    // },
     {
-      path: '',
-      component: TicketManagerLoginComponent,
-    },
-    {
-      path: 'login',
+      path: 'log',
       component: TicketManagerLoginComponent,
     },
     {

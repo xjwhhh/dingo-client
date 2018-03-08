@@ -1,0 +1,21 @@
+<div class="container">
+  <div *ngFor="let earning of showEarningList">
+    <div class="row">
+      <label>{{earning.id}}</label>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label>{{earning.showId}}</label>
+      </div>
+      <div class="col-md-6">
+        <label>venueName</label>
+      </div>
+    </div>
+    <div class="row">
+      <p>比例条</p>
+    </div>
+    <div class="row">
+      <button type="button" (click)="doSettle(earning.id)">结算</button>
+    </div>
+  </div>
+</div>

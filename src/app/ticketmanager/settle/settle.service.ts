@@ -4,6 +4,7 @@ import {TicketManager} from '../../entity/ticketmanager';
 import {VenueApplicationType} from '../../entity/VenueApplicationType';
 import {VenueApplication} from '../../entity/VenueApplication';
 import {ResultMessage} from '../../entity/resultmessage';
+import {ShowEarning} from '../../entity/showEarning';
 
 @Injectable()
 export class TicketManagerSettleService {
@@ -18,6 +19,8 @@ export class TicketManagerSettleService {
 
   getApplicationUrl = '';
   approveApplicationUrl = '';
+  getUnsettledShowEarningUrl = '';
+  doSettleUrl = '';
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
@@ -27,21 +30,20 @@ export class TicketManagerSettleService {
   constructor(private http: Http) {
   }
 
-  getApplication(type: VenueApplicationType): Promise<VenueApplication[]> {
+  getUnSettledShowEarning(): Promise<ShowEarning[]> {
     const data = new URLSearchParams();
-    data.append('type', type + '');
-    return this.http.post(this.getApplicationUrl, data, this.options)
+    return this.http.post(this.getUnsettledShowEarningUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as TicketManager)
+      .then(response => response.json() as ShowEarning[])
       .catch(this.handleError);
   }
 
-  approveApplication(applicationId: number): Promise<ResultMessage> {
+  doSettle(showEarningId: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
-    data.append('venueApplicationId', applicationId + '');
-    return this.http.post(this.approveApplicationUrl, data, this.options)
+    data.append('showEarningId',  showEarningId + '');
+    return this.http.post(this.doSettleUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as TicketManager)
+      .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
 

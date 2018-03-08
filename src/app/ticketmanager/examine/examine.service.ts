@@ -32,7 +32,7 @@ export class TicketManagerExamineService {
     data.append('type', type + '');
     return this.http.post(this.getApplicationUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as TicketManager)
+      .then(response => response.json() as VenueApplication[])
       .catch(this.handleError);
   }
 
@@ -41,7 +41,7 @@ export class TicketManagerExamineService {
     data.append('venueApplicationId', applicationId + '');
     return this.http.post(this.approveApplicationUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as TicketManager)
+      .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
 
