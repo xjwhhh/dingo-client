@@ -1,5 +1,5 @@
 export class Seat {
   id: number;
-  venueOd: number;
+  venueId: number;
   description: string;
 }

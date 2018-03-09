@@ -1,7 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import {VenueIdentifyService} from '../identify.service';
-import {User} from '../../../entity/user';
 import {Venue} from '../../../entity/venue';
 
 

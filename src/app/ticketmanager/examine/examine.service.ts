@@ -16,8 +16,8 @@ export class TicketManagerExamineService {
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
-  getApplicationUrl = '';
-  approveApplicationUrl = '';
+  getApplicationUrl = 'http://localhost:8080/venue/getApplication';
+  approveApplicationUrl = 'http://localhost:8080/venue/approveApplication';
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

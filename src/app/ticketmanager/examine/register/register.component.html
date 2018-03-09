@@ -1,9 +1,15 @@
 <div class="container">
-  <div *ngFor="let application of venueApplicationList">
+  <div *ngFor="let application of venueApplicationList;let i= index">
     <div class="row">
+      <label>{{application.id}}</label>
     </div>
     <div class="row">
-      <button type="button" (click)="approve(application.id)"></button>
+      <div class="col-md-3">
+        <label>{{venueList[i].account}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <button type="button" (click)="approve(application.id)">同意注册申请</button>
     </div>
   </div>
 </div>

@@ -7,8 +7,8 @@ export class Show {
   showType: ShowType;
   name: string;
   description: string;
-  time: string;
-  veneuId: number;
+  showTime: string;
+  venueId: number;
   totalSeats: number;
   currentSeats: number;
   progressType: ProgressType;

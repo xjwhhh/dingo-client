@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {VenueApplication} from '../../../entity/VenueApplication';
 import {TicketManagerExamineService} from '../examine.service';
 import {VenueApplicationType} from '../../../entity/VenueApplicationType';
 import {ResultMessage} from '../../../entity/resultmessage';
+import {Venue} from '../../../entity/venue';
 
 
 @Component({
@@ -15,6 +15,8 @@ export class TicketManagerExamineRegisterComponent implements OnInit {
 
   venueApplicationList: VenueApplication[];
 
+  venueList: Venue[];
+
   ngOnInit() {
   }
 
@@ -22,7 +24,14 @@ export class TicketManagerExamineRegisterComponent implements OnInit {
   }
 
   getUpdateApplication() {
-    this.examineService.getApplication(VenueApplicationType.UPDATE).then(list => this.venueApplicationList = list);
+    this.examineService.getApplication(VenueApplicationType.UPDATE).then(list => this.parseVenueInfo(list));
+  }
+
+  parseVenueInfo(venueApplicationList: VenueApplication[]) {
+    this.venueApplicationList = venueApplicationList;
+    for (let i = 0; i < this.venueApplicationList.length; i++) {
+      this.venueList.push(JSON.parse(this.venueApplicationList[i].venueJson));
+    }
   }
 
   approve(applicationId: number) {

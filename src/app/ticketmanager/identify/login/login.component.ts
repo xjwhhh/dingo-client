@@ -33,6 +33,8 @@ export class TicketManagerLoginComponent implements OnInit {
   }
 
   check(ticketManager: TicketManager) {
+    window.open('#');
+    console.log(ticketManager);
     if (ticketManager.id == null) {
       alert('用户名或密码错误');
     } else {

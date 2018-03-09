@@ -17,10 +17,8 @@ export class TicketManagerSettleService {
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
-  getApplicationUrl = '';
-  approveApplicationUrl = '';
-  getUnsettledShowEarningUrl = '';
-  doSettleUrl = '';
+  getUnsettledShowEarningUrl = 'http://localhost:8080/ticketManager/getUnSettledShowEarning';
+  doSettleUrl = 'http://localhost:8080/ticketManager/doSettle';
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
