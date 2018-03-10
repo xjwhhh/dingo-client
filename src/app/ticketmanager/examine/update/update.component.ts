@@ -14,9 +14,9 @@ import {Venue} from '../../../entity/venue';
 })
 export class TicketManagerExamineUpdateComponent implements OnInit {
 
-  venueApplicationList: VenueApplication[];
+  venueApplicationList: VenueApplication[] = [];
 
-  venueList: Venue[];
+  venueList: Venue[] = [];
 
   ngOnInit() {
   }
@@ -40,7 +40,7 @@ export class TicketManagerExamineUpdateComponent implements OnInit {
   }
 
   checkApproveResult(result: ResultMessage) {
-    if (result === ResultMessage.SUCCESS) {
+    if (result.toString() === 'SUCCESS') {
       alert('success');
     } else {
       alert('fail');

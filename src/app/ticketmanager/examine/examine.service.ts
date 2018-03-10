@@ -29,7 +29,8 @@ export class TicketManagerExamineService {
 
   getApplication(type: VenueApplicationType): Promise<VenueApplication[]> {
     const data = new URLSearchParams();
-    data.append('type', type + '');
+    console.log(type);
+    data.append('type', type.toString() + '');
     return this.http.post(this.getApplicationUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as VenueApplication[])

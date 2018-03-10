@@ -31,7 +31,7 @@ export class TicketManagerSettleComponent implements OnInit {
   }
 
   checkSettleResult(result: ResultMessage) {
-    if (result === ResultMessage.SUCCESS) {
+    if (result.toString() === 'SUCCESS') {
       alert('success');
     } else {
       alert('fail');

@@ -13,7 +13,7 @@
       <label>名称</label>
     </div>
     <div class="col-md-10">
-      <label>{{venue.name}}</label>
+      <input type="text" value="{{venue.name}}" #name>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -22,7 +22,7 @@
       <label>地址</label>
     </div>
     <div class="col-md-10">
-      <label>{{venue.address}}</label>
+      <input type="text" value="{{venue.address}}" #address>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -45,6 +45,6 @@
   </div>
   <div class="row" style="height: 10px;"></div>
   <div class="col-md-offset-2 col-md-10">
-    <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
+    <button type="button" class="btn btn-default" (click)="doUpdate()">确认修改</button>
   </div>
 </div>

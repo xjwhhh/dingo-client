@@ -8,6 +8,7 @@ import {VenueInfoComponent} from './venueinfo/venueInfo.component';
 import {VenueBasicInfoComponent} from './venueinfo/basicinfo/basicinfo.component';
 import {VenueOrderInfoComponent} from './venueinfo/orderinfo/orderInfo.component';
 import {VenueStatisticsInfoComponent} from './venueinfo/statisticsinfo/statisticsInfo.component';
+import {VenueUpdateBasicInfoComponent} from './venueinfo/updatebasicinfo/updateBasicInfo.component';
 
 
 const IdentifyRoutes: Routes = [{
@@ -27,7 +28,7 @@ const IdentifyRoutes: Routes = [{
       component: VenueRegisterComponent,
     },
     {
-      path: 'userInfo',
+      path: 'userInfo/:id',
       component: VenueInfoComponent,
       children: [
         {
@@ -41,11 +42,16 @@ const IdentifyRoutes: Routes = [{
         {
           path: 'statisticsInfo',
           component: VenueStatisticsInfoComponent,
+        },
+        {
+          path: 'updateBasicInfo',
+          component: VenueUpdateBasicInfoComponent,
         }
       ]
     }
   ]
-},];
+},
+];
 
 @NgModule({
   imports: [

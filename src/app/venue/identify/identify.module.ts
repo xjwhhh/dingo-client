@@ -12,6 +12,7 @@ import {VenueInfoComponent} from './venueinfo/venueInfo.component';
 import {VenueBasicInfoComponent} from './venueinfo/basicinfo/basicinfo.component';
 import {VenueOrderInfoComponent} from './venueinfo/orderinfo/orderInfo.component';
 import {VenueStatisticsInfoComponent} from './venueinfo/statisticsinfo/statisticsInfo.component';
+import {VenueUpdateBasicInfoComponent} from './venueinfo/updatebasicinfo/updateBasicInfo.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {VenueStatisticsInfoComponent} from './venueinfo/statisticsinfo/statistic
     VenueIdentifyComponent,
     VenueInfoComponent,
     VenueBasicInfoComponent,
+    VenueUpdateBasicInfoComponent,
     VenueOrderInfoComponent,
     VenueStatisticsInfoComponent
   ],

@@ -5,11 +5,11 @@ import {VenueIdentifyService} from '../../identify.service';
 
 
 @Component({
-  selector: 'app-venue-info-basic-info',
-  templateUrl: './basicInfo.component.html',
-  styleUrls: ['./basicInfo.component.css'],
+  selector: 'app-venue-info-update-basic-info',
+  templateUrl: './updateBasicInfo.component.html',
+  styleUrls: ['./updateBasicInfo.component.css'],
 })
-export class VenueBasicInfoComponent implements OnInit {
+export class VenueUpdateBasicInfoComponent implements OnInit {
 
   venueId: number;
   venue: Venue = new Venue();
@@ -19,12 +19,6 @@ export class VenueBasicInfoComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.route.params.subscribe((params: Params) => {
-    //   console.log(params);
-    //   this.venueId = params['id'];
-    // });
-    // // this.showType = this.route.snapshot.params['type'];
-    // console.log(this.venueId);
     this.venueId = this.identifyService.getVenueId();
     this.getVenueBasicInfo();
   }
@@ -33,7 +27,6 @@ export class VenueBasicInfoComponent implements OnInit {
     this.identifyService.getVenueBasicInfo(this.venueId).then(venue => this.venue = venue);
   }
 
-  gotoUpdateBasicInfo() {
-    this.router.navigate(['/venueIdentify/userInfo/' + this.venueId + '/updateBasicInfo']);
+  doUpdate() {
   }
 }

@@ -13,18 +13,19 @@ import {Venue} from '../../../entity/venue';
 })
 export class TicketManagerExamineRegisterComponent implements OnInit {
 
-  venueApplicationList: VenueApplication[];
+  venueApplicationList: VenueApplication[] = [];
 
-  venueList: Venue[];
+  venueList: Venue[] = [];
 
   ngOnInit() {
+    this.getRegisterApplication();
   }
 
   constructor(private examineService: TicketManagerExamineService) {
   }
 
-  getUpdateApplication() {
-    this.examineService.getApplication(VenueApplicationType.UPDATE).then(list => this.parseVenueInfo(list));
+  getRegisterApplication() {
+    this.examineService.getApplication(VenueApplicationType.REGISTER).then(list => this.parseVenueInfo(list));
   }
 
   parseVenueInfo(venueApplicationList: VenueApplication[]) {
@@ -39,7 +40,11 @@ export class TicketManagerExamineRegisterComponent implements OnInit {
   }
 
   checkApproveResult(result: ResultMessage) {
-    if (result === ResultMessage.SUCCESS) {
+    // console.log(result);
+    // console.log(typeof (result));
+    // console.log(result.toString());
+    // console.log(ResultMessage.SUCCESS.toString());
+    if (result.toString() === 'SUCCESS') {
       alert('success');
     } else {
       alert('fail');

@@ -22,13 +22,13 @@ export class VenueLoginComponent implements OnInit {
   }
 
 
-  login(account: string, password: string) {
-    if (account === '') {
-      alert('未输入用户名');
+  login(code: string, password: string) {
+    if (code === '') {
+      alert('未输入场馆编码');
     } else if (password === '') {
       alert('未输入密码');
     } else {
-      this.identifyService.login(account, password).then(venue => this.check(venue));
+      this.identifyService.login(code, password).then(venue => this.check(venue));
     }
   }
 
@@ -37,6 +37,8 @@ export class VenueLoginComponent implements OnInit {
       alert('用户名或密码错误');
     } else {
       alert('登录成功');
+      this.identifyService.setVenueId(venue.id);
+      this.router.navigate(['/venueIdentify/userInfo', venue.id]);
     }
   }
 

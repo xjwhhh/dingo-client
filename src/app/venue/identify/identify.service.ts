@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Router} from '@angular/router';
-import {User} from '../../entity/user';
 import {OrderState} from '../../entity/orderstate';
 import {Order} from '../../entity/order';
 import {ResultMessage} from '../../entity/resultmessage';
@@ -10,6 +9,8 @@ import {Venue} from '../../entity/venue';
 
 @Injectable()
 export class VenueIdentifyService {
+
+  venueId = 1;
 
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
@@ -30,6 +31,14 @@ export class VenueIdentifyService {
     return Promise.reject(error.message || error);
   }
 
+  getVenueId() {
+    return this.venueId;
+  }
+
+  setVenueId(venueId: number) {
+    this.venueId = venueId;
+  }
+
   register(account: string, password: string): Promise<ResultMessage> {
     const data = new URLSearchParams();
     data.append('account', account);
@@ -41,9 +50,9 @@ export class VenueIdentifyService {
   }
 
 
-  login(account: string, password: string): Promise<Venue> {
+  login(code: string, password: string): Promise<Venue> {
     const data = new URLSearchParams();
-    data.append('account', account);
+    data.append('code', code);
     data.append('password', password);
     return this.http.post(this.loginUrl, data, this.options)
       .toPromise()
