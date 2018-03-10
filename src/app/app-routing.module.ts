@@ -10,6 +10,7 @@ import {VenueIdentifyComponent} from './venue/identify/identify.component';
 import {TicketManagerIdentifyComponent} from './ticketmanager/identify/identify.component';
 import {TicketManagerExamineComponent} from './ticketmanager/examine/examine.component';
 import {TicketManagerSettleComponent} from './ticketmanager/settle/settle.component';
+import {TicketManagerStatisticsInfoComponent} from './ticketmanager/statisticsinfo/statisticsInfo.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'ticketManagerSettle',
     component: TicketManagerSettleComponent,
+  },
+  {
+    path: 'ticketManagerStatisticsInfo',
+    component: TicketManagerStatisticsInfoComponent,
   }
 ];
 

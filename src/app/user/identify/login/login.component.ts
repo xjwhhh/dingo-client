@@ -33,10 +33,12 @@ export class LoginComponent implements OnInit {
   }
 
   check(user: User) {
+    window.open('https://zhidao.baidu.com/question/449950170.html');
     if (user.id == null) {
       alert('用户名或密码错误');
     } else {
       alert('登录成功');
+      this.router.navigate(['/identify/userInfo', user.id]);
     }
   }
 

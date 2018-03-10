@@ -22,5 +22,5 @@ import {TicketManagerFinanceComponent} from './finance/ticketFinance.component';
   providers: [TicketManagerStatisticsInfoService],
   bootstrap: [TicketManagerStatisticsInfoComponent]
 })
-export class TicketManagerIdentifyModule {
+export class TicketManagerStatisticsModule {
 }

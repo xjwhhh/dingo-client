@@ -19,7 +19,7 @@ const IdentifyRoutes: Routes = [{
       component: TicketManagerLoginComponent,
     },
     {
-      path: 'userInfo',
+      path: 'userInfo/:id',
       component: TicketManagerInfoComponent,
       children: [
         {

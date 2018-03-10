@@ -1,10 +1,21 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-3" routerLink="../ticketManagerExamine" routerLinkActive="active">审批</div>
+    <div class="col-md-3" routerLink="../ticketManagerSettle" routerLinkActive="active">结算</div>
+    <div class="col-md-3" routerLink="../ticketManagerStatisticsInfo" routerLinkActive="active">统计</div>
+    <div class="col-md-3" routerLink="../ticketManagerIdentify" routerLinkActive="active">个人</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
     <div class="col-md-6">
-      <label routerLink="/register" routerLinkActive="active">场馆注册</label>
+      <label routerLink="register" routerLinkActive="active">场馆注册</label>
     </div>
     <div class="col-md-6">
-      <label routerLink="/update" routerLinkActive="active">信息修改</label>
+      <label routerLink="update" routerLinkActive="active">信息修改</label>
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>

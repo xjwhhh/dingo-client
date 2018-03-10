@@ -22,13 +22,14 @@ export class TicketManagerIdentifyService {
   }
 
   login(account: string, password: string): Promise<TicketManager> {
-    console.log('111');
+    // window.open('https://zhidao.baidu.com/question/449950170.html');
+    // console.log('111');
     const data = new URLSearchParams();
     data.append('account', account);
     data.append('password', password);
     return this.http.post(this.loginUrl, data, this.options)
       .toPromise()
-      .then(response => {console.log('222');response.json() as TicketManager})
+      .then(response => response.json() as TicketManager)
       .catch(this.handleError);
   }
 }

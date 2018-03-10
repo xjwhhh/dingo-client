@@ -27,7 +27,7 @@ const IdentifyRoutes: Routes = [{
       component: RegisterComponent,
     },
     {
-      path: 'userInfo',
+      path: 'userInfo/:id',
       component: UserInfoComponent,
       children: [
         {

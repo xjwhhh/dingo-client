@@ -28,23 +28,19 @@ export class TicketManagerLoginComponent implements OnInit {
     } else if (password === '') {
       alert('未输入密码');
     } else {
+      // window.open('https://www.baidu.com');
       this.identifyService.login(account, password).then(ticketManager => this.check(ticketManager));
     }
   }
 
   check(ticketManager: TicketManager) {
-    window.open('#');
     console.log(ticketManager);
     if (ticketManager.id == null) {
       alert('用户名或密码错误');
     } else {
       alert('登录成功');
+      this.router.navigate(['/ticketManagerIdentify/userInfo', ticketManager.id]);
     }
   }
-
-  gotoRegister() {
-    this.router.navigate(['/identify/register']);
-  }
-
 
 }
