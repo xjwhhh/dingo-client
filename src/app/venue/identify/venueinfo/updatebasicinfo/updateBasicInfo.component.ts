@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Venue} from '../../../../entity/venue';
 import {VenueIdentifyService} from '../../identify.service';
+import {ResultMessage} from '../../../../entity/resultmessage';
+import {add} from 'ngx-bootstrap/chronos';
 
 
 @Component({
@@ -27,6 +29,19 @@ export class VenueUpdateBasicInfoComponent implements OnInit {
     this.identifyService.getVenueBasicInfo(this.venueId).then(venue => this.venue = venue);
   }
 
-  doUpdate() {
+  doUpdate(name: string, address: string) {
+    this.venue.name = name;
+    this.venue.address = address;
+    const venueJson = JSON.stringify(this.venue);
+    this.identifyService.updateVenueInfo(venueJson).then(result => this.checkUpdateResult(result));
+  }
+
+  checkUpdateResult(result: ResultMessage) {
+    if (result.toString() === 'SUCCESS') {
+      alert('申请更新成功，等待管理员批准');
+      this.router.navigate(['/venueIdentify/userInfo/' + this.venueId + '/basicInfo']);
+    } else {
+      alert('申请更新失败，请稍后重试');
+    }
   }
 }

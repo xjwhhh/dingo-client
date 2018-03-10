@@ -45,9 +45,9 @@ export class TicketManagerExamineRegisterComponent implements OnInit {
     // console.log(result.toString());
     // console.log(ResultMessage.SUCCESS.toString());
     if (result.toString() === 'SUCCESS') {
-      alert('success');
+      alert('通过申请成功');
     } else {
-      alert('fail');
+      alert('通过申请失败，请稍后重试');
     }
   }
 }

@@ -18,6 +18,7 @@ export class VenueIdentifyService {
   private registerUrl = 'http://localhost:8080/venue/register';
   private loginUrl = 'http://localhost:8080/venue/login';
   private getVenueBasicInfoUrl = 'http://localhost:8080/venue/getVenueById';
+  private updateVenueInfoUrl = 'http://localhost:8080/venue/updateInfo';
   private getVenueOrderUrl = 'http://localhost:8080/order/getOrderByVenueId';
   private getUserBasicInfoUrl = '';
   private getUserOrderUrl = '';
@@ -57,6 +58,15 @@ export class VenueIdentifyService {
     return this.http.post(this.loginUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Venue)
+      .catch(this.handleError);
+  }
+
+  updateVenueInfo(venueJson: string): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('venueJson', venueJson);
+    return this.http.post(this.updateVenueInfoUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
 

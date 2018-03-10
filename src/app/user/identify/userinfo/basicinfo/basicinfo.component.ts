@@ -11,22 +11,27 @@ import {IdentifyService} from '../../identify.service';
 })
 export class UserBasicInfoComponent implements OnInit {
   userId: number;
-  user: User;
+  user: User = new User();
 
   constructor(private identifyService: IdentifyService, private route: ActivatedRoute, private router: Router) {
   }
 
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.userId = params['userId'];
-    });
-    // this.showType = this.route.snapshot.params['type'];
+    // this.route.params.subscribe((params: Params) => {
+    //   this.userId = params['userId'];
+    // });
+    // // this.showType = this.route.snapshot.params['type'];
+    this.userId = this.identifyService.getUserId();
     console.log(this.userId);
     this.getUserBasicInfo();
   }
 
   getUserBasicInfo() {
     this.identifyService.getUserBasicInfo(this.userId).then(user => this.user = user);
+  }
+
+  gotoUpdateBasicInfo(){
+    this.router.navigate(['/identify/userInfo/' + this.userId + '/updateBasicInfo']);
   }
 }

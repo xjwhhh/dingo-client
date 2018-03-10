@@ -9,7 +9,7 @@ import {ResultMessage} from '../../entity/resultmessage';
 
 @Injectable()
 export class IdentifyService {
-  userId: number;
+  userId = 1;
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
@@ -17,6 +17,8 @@ export class IdentifyService {
   private loginUrl = 'http://localhost:8080/user/login';
   private getUserBasicInfoUrl = 'http://localhost:8080/user/getUserById';
   private getUserOrderUrl = 'http://localhost:8080/order/getOrderByUserId';
+  private updateUserBasicInfoUrl = 'http://localhost:8080/user/update';
+  private emailConfirmationUrl = 'http://localhost:8080/user/emailConfirmation';
 
 
   constructor(private http: Http, private router: Router) {
@@ -55,6 +57,26 @@ export class IdentifyService {
       .then(response => response.json() as User)
       .catch(this.handleError);
   }
+
+  updateBasicInfo(userJson: string): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('userJson', userJson);
+    return this.http.post(this.updateUserBasicInfoUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
+      .catch(this.handleError);
+  }
+
+  emailConfirmation(userId: number, emailAddress: string): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('userId', userId + '');
+    data.append('emailAddress', emailAddress);
+    return this.http.post(this.emailConfirmationUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
+      .catch(this.handleError);
+  }
+
 
   getUserBasicInfo(userId: number): Promise<User> {
     const data = new URLSearchParams();

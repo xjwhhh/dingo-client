@@ -13,7 +13,23 @@
       <label>昵称</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.name}}</label>
+      <input type="text" value="{{user.name}}" #name>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label>更新密码</label>
+    </div>
+    <div class="col-md-10">
+      <input type="password" value="{{user.password}}" #newPassword>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label>确认密码</label>
+    </div>
+    <div class="col-md-10">
+      <input type="password" value="{{user.password}}" #reNewPassword>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -49,7 +65,7 @@
       <label>绑定邮箱</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.emailAddress}}</label>
+      <input type="text" value="{{user.emailAddress}}" #emailAddress>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -62,11 +78,11 @@
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
-  <!--<div class="col-md-offset-2 col-md-10">-->
-    <!--<button type="button" class="btn btn-default">邮箱验证</button>-->
-  <!--</div>-->
-  <!--<div class="row" style="height: 10px;"></div>-->
   <div class="col-md-offset-2 col-md-10">
-    <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
+    <button type="button" class="btn btn-default" (click)="emailConfirmation(emailAddress.value)">邮箱验证</button>
+  </div>
+  <div class="row" style="height: 10px;"></div>
+  <div class="col-md-offset-2 col-md-10">
+    <button type="button" class="btn btn-default" (click)="doUpdate(name.value,newPassword.value,reNewPassword.value)">确认更新</button>
   </div>
 </div>

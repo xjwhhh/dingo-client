@@ -19,6 +19,7 @@ export class TicketManagerExamineUpdateComponent implements OnInit {
   venueList: Venue[] = [];
 
   ngOnInit() {
+    this.getUpdateApplication();
   }
 
   constructor(private examineService: TicketManagerExamineService) {
@@ -41,9 +42,9 @@ export class TicketManagerExamineUpdateComponent implements OnInit {
 
   checkApproveResult(result: ResultMessage) {
     if (result.toString() === 'SUCCESS') {
-      alert('success');
+      alert('通过申请成功');
     } else {
-      alert('fail');
+      alert('通过申请失败，请稍后重试');
     }
   }
 

@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       alert('用户名或密码错误');
     } else {
       alert('登录成功');
+      this.identifyService.setUserId(user.id);
       this.router.navigate(['/identify/userInfo', user.id]);
     }
   }

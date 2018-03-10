@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TicketManagerStatisticsInfoService} from '../statisticsInfo.service';
 import {Venue} from '../../../entity/venue';
+import {User} from '../../../entity/user';
 
 
 @Component({
@@ -11,14 +12,30 @@ import {Venue} from '../../../entity/venue';
 export class TicketManagerVenueTicketComponent implements OnInit {
 
   venueList: Venue[];
+  showVenueList: Venue[];
 
   ngOnInit() {
+    this.getVenueList();
   }
 
   constructor(private statisticsService: TicketManagerStatisticsInfoService) {
   }
 
-  getUserList() {
-    this.statisticsService.getVenueList().then(list => this.venueList = list);
+  getVenueList() {
+    this.statisticsService.getVenueList().then(list => this.initList(list));
+  }
+
+  initList(venueList: Venue[]) {
+    this.venueList = venueList;
+    this.showVenueList = venueList;
+  }
+
+  searchVenue(text: string) {
+    this.showVenueList.splice(0, this.showVenueList.length);
+    for (let i = 0; i < this.venueList.length; i++) {
+      if ((this.venueList[i].id === parseInt(text, 10)) || this.venueList[i].name.indexOf(text) !== -1) {
+        this.showVenueList.push(this.venueList[i]);
+      }
+    }
   }
 }

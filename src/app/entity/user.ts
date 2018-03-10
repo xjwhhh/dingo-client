@@ -7,7 +7,7 @@ export class User {
   emailAddress: string;
   isConfirmed: boolean;
   name: string;
-  level: VIPLevel;
+  level: string;
   balance: number;
   totalIntegral: number;
   currentIntegral: number;

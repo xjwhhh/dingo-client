@@ -8,6 +8,7 @@ import {UserInfoComponent} from './userinfo/userInfo.component';
 import {UserBasicInfoComponent} from './userinfo/basicinfo/basicinfo.component';
 import {UserOrderInfoComponent} from './userinfo/orderinfo/orderInfo.component';
 import {UserStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsInfo.component';
+import {UserUpdateBasicInfoComponent} from './userinfo/updatebasicinfo/updateBasicInfo.component';
 
 
 const IdentifyRoutes: Routes = [{
@@ -41,6 +42,10 @@ const IdentifyRoutes: Routes = [{
         {
           path: 'statisticsInfo',
           component: UserStatisticsInfoComponent,
+        },
+        {
+          path: 'updateBasicInfo',
+          component: UserUpdateBasicInfoComponent,
         }
       ]
     }

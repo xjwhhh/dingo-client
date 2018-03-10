@@ -12,6 +12,7 @@ import {UserInfoComponent} from './userinfo/userInfo.component';
 import {UserBasicInfoComponent} from './userinfo/basicinfo/basicinfo.component';
 import {UserOrderInfoComponent} from './userinfo/orderinfo/orderInfo.component';
 import {UserStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsInfo.component';
+import {UserUpdateBasicInfoComponent} from './userinfo/updatebasicinfo/updateBasicInfo.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {UserStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsI
     IdentifyComponent,
     UserInfoComponent,
     UserBasicInfoComponent,
+    UserUpdateBasicInfoComponent,
     UserOrderInfoComponent,
     UserStatisticsInfoComponent
   ],

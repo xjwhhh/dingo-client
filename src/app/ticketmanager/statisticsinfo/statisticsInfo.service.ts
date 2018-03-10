@@ -12,9 +12,8 @@ export class TicketManagerStatisticsInfoService {
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
-  private loginUrl = 'http://localhost:8080/ticketManager/login';
-  private getVenueListUrl = '';
-  private getUserListUrl = '';
+  private getUserListUrl = 'http://localhost:8080/user/userList';
+  private getVenueListUrl = 'http://localhost:8080/venue/venueList';
 
   constructor(private http: Http, private router: Router) {
   }
