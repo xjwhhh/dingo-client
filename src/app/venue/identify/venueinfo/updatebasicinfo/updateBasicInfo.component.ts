@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Venue} from '../../../../entity/venue';
 import {VenueIdentifyService} from '../../identify.service';
 import {ResultMessage} from '../../../../entity/resultmessage';
-import {add} from 'ngx-bootstrap/chronos';
 
 
 @Component({
@@ -16,6 +15,10 @@ export class VenueUpdateBasicInfoComponent implements OnInit {
   venueId: number;
   venue: Venue = new Venue();
 
+  firstSeatNumber = 0;
+  secondSeatNumber = 0;
+  thirdSeatNumber = 0;
+
   constructor(private identifyService: VenueIdentifyService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -26,14 +29,28 @@ export class VenueUpdateBasicInfoComponent implements OnInit {
   }
 
   getVenueBasicInfo() {
-    this.identifyService.getVenueBasicInfo(this.venueId).then(venue => this.venue = venue);
+    this.identifyService.getVenueBasicInfo(this.venueId)
+      .then(venue => this.setVenue(this.venue));
   }
 
-  doUpdate(name: string, address: string) {
-    this.venue.name = name;
-    this.venue.address = address;
+  setVenue(venue: Venue) {
+    this.venue = venue;
+    if (this.venue.seatList !== null) {
+      for (let i = 0; i < this.venue.seatList.length; i++) {
+        if (this.venue.seatList[i].level === '一等座') {
+          this.firstSeatNumber++;
+        } else if (this.venue.seatList[i].level === '二等座') {
+          this.secondSeatNumber++;
+        } else if (this.venue.seatList[i].level === '三等座') {
+          this.thirdSeatNumber++;
+        }
+      }
+    }
+  }
+
+  doUpdate() {
     const venueJson = JSON.stringify(this.venue);
-    this.identifyService.updateVenueInfo(venueJson).then(result => this.checkUpdateResult(result));
+    this.identifyService.updateVenueInfo(venueJson, this.firstSeatNumber, this.secondSeatNumber, this.thirdSeatNumber).then(result => this.checkUpdateResult(result));
   }
 
   checkUpdateResult(result: ResultMessage) {

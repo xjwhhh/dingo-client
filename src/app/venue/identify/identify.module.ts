@@ -13,10 +13,12 @@ import {VenueBasicInfoComponent} from './venueinfo/basicinfo/basicinfo.component
 import {VenueOrderInfoComponent} from './venueinfo/orderinfo/orderInfo.component';
 import {VenueStatisticsInfoComponent} from './venueinfo/statisticsinfo/statisticsInfo.component';
 import {VenueUpdateBasicInfoComponent} from './venueinfo/updatebasicinfo/updateBasicInfo.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     VenueIdentifyRoutingModule,
   ],
   declarations: [

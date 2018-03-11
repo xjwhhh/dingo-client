@@ -1,17 +1,16 @@
-import {ShowType} from './showtype';
-import {ProgressType} from './progresstype';
 import {ShowSeat} from './showseat';
 
 export class Show {
   id: number;
-  showType: ShowType;
+  showType: string;
   name: string;
   description: string;
-  showTime: string;
+  startTime: string;
+  endTime: string;
   venueId: number;
   totalSeats: number;
   currentSeats: number;
-  progressType: ProgressType;
+  progressType: string;
   earning: number;
   seatList: ShowSeat[];
 }

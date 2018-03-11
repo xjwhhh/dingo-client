@@ -17,6 +17,7 @@ import {TicketManagerIdentifyModule} from './ticketmanager/identify/identify.mod
 import {TicketManagerSettleModule} from './ticketmanager/settle/settle.module';
 import {TicketManagerExamineModule} from './ticketmanager/examine/examine.module';
 import {TicketManagerStatisticsModule} from './ticketmanager/statisticsinfo/statisticsInfo.module';
+import {VenuePublishShowModule} from './venue/publishshow/publishShow.module';
 
 // import {TicketManagerModule} from './ticketmanager/ticketManager.module';
 
@@ -32,6 +33,7 @@ import {TicketManagerStatisticsModule} from './ticketmanager/statisticsinfo/stat
     IdentifyModule,
     ShowModule,
     VenueIdentifyModule,
+    VenuePublishShowModule,
     TicketManagerIdentifyModule,
     TicketManagerExamineModule,
     TicketManagerSettleModule,

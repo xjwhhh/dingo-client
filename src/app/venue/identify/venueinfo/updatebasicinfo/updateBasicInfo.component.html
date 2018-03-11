@@ -1,50 +1,57 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <label>编号</label>
+  <form #venueForm="ngForm" (submit)="doUpdate()">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <label>名称</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="name" [(ngModel)]="venue.name" required>
+        </div>
+      </div>
     </div>
-    <div class="col-md-10">
-      <label>{{venue.code}}</label>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <label>地址</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" name="address" [(ngModel)]="venue.address" required>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row" style="height: 10px;"></div>
-  <div class="row">
-    <div class="col-md-2">
-      <label>名称</label>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <label>一等座</label>
+        </div>
+        <div class="col-md-10">
+          <input type="number" name="FirstSeat" [(ngModel)]="firstSeatNumber" required>
+        </div>
+      </div>
     </div>
-    <div class="col-md-10">
-      <input type="text" value="{{venue.name}}" #name>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <label>二等座</label>
+        </div>
+        <div class="col-md-10">
+          <input type="number" name="FirstSeat" [(ngModel)]="secondSeatNumber" required>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row" style="height: 10px;"></div>
-  <div class="row">
-    <div class="col-md-2">
-      <label>地址</label>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <label>三等座</label>
+        </div>
+        <div class="col-md-10">
+          <input type="number" name="FirstSeat" [(ngModel)]="thirdSeatNumber" required>
+        </div>
+      </div>
     </div>
-    <div class="col-md-10">
-      <input type="text" value="{{venue.address}}" #address>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success" [disabled]="!venueForm.form.valid">确认更新</button>
     </div>
-  </div>
-  <div class="row" style="height: 10px;"></div>
-  <div class="row">
-    <div class="col-md-2">
-      <label>余额</label>
-    </div>
-    <div class="col-md-10">
-      <label>{{venue.balance}}</label>
-    </div>
-  </div>
-  <div class="row" style="height: 10px;"></div>
-  <div class="row">
-    <div class="col-md-2">
-      <label>座位数</label>
-    </div>
-    <div class="col-md-10">
-      <label *ngIf="venue.seatList">{{venue.seatList.length}}</label>
-    </div>
-  </div>
-  <div class="row" style="height: 10px;"></div>
-  <div class="col-md-offset-2 col-md-10">
-    <button type="button" class="btn btn-default" (click)="doUpdate(name.value,address.value)">确认修改</button>
-  </div>
+  </form>
 </div>

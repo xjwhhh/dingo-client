@@ -61,9 +61,12 @@ export class VenueIdentifyService {
       .catch(this.handleError);
   }
 
-  updateVenueInfo(venueJson: string): Promise<ResultMessage> {
+  updateVenueInfo(venueJson: string, one: number, two: number, three: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
     data.append('venueJson', venueJson);
+    data.append('one', one + '');
+    data.append('two', two + '');
+    data.append('three', three + '');
     return this.http.post(this.updateVenueInfoUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)
