@@ -5,6 +5,7 @@ import {VenueApplication} from '../../../entity/VenueApplication';
 import {VenueApplicationType} from '../../../entity/VenueApplicationType';
 import {ResultMessage} from '../../../entity/resultmessage';
 import {Venue} from '../../../entity/venue';
+import {copyObj} from '@angular/animations/browser/src/util';
 
 
 @Component({
@@ -32,7 +33,20 @@ export class TicketManagerExamineUpdateComponent implements OnInit {
   parseVenueInfo(venueApplicationList: VenueApplication[]) {
     this.venueApplicationList = venueApplicationList;
     for (let i = 0; i < this.venueApplicationList.length; i++) {
-      this.venueList.push(JSON.parse(this.venueApplicationList[i].venueJson));
+      console.log(this.venueApplicationList[i].venueJson);
+      const object =  JSON.parse(this.venueApplicationList[i].venueJson);
+      this.venueList.push(object);
+      // console.log(typeof (object));
+      // console.log(object.code);
+      // const t = Object.assign(new Venue(), JSON.parse(this.venueApplicationList[i].venueJson));
+      // console.log(t.code);
+      // console.log(t['code']);
+      //
+      // const a = JSON.parse(this.venueApplicationList[i].venueJson);
+      // for (let m in a) {
+      //   console.log(m);
+      //   console.log(a[m]);
+      // }
     }
   }
 

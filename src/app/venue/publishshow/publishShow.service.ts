@@ -13,7 +13,7 @@ export class PublishShowService {
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
-  private publishShowUrl = 'http://localhost:8080/venue/publishShow';
+  private publishShowUrl = 'http://localhost:8080/show/publishShow';
 
 
   constructor(private http: Http, private router: Router) {
@@ -33,9 +33,12 @@ export class PublishShowService {
   }
 
 
-  publishShow(showJson: string): Promise<ResultMessage> {
+  publishShow(showJson: string, one: number, two: number, three: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
     data.append('showJson', showJson);
+    data.append('one', one + '');
+    data.append('two', two + '');
+    data.append('three', three + '');
     return this.http.post(this.publishShowUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)

@@ -30,7 +30,7 @@ export class VenueUpdateBasicInfoComponent implements OnInit {
 
   getVenueBasicInfo() {
     this.identifyService.getVenueBasicInfo(this.venueId)
-      .then(venue => this.setVenue(this.venue));
+      .then(venue => this.setVenue(venue));
   }
 
   setVenue(venue: Venue) {

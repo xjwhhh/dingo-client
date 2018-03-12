@@ -57,12 +57,12 @@ export class ShowService {
       .catch(this.handleError);
   }
 
-  getShowById(showId: number): Promise<Show[]> {
+  getShowById(showId: number): Promise<Show> {
     const data = new URLSearchParams();
     data.append('showId', showId + '');
     return this.http.post(this.getShowByIdUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as Show[])
+      .then(response => response.json() as Show)
       .catch(this.handleError);
   }
 

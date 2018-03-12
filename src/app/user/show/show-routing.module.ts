@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {ShowComponent} from './show.component';
+import {ShowSelectSeatComponent} from './selectseat/selectSeat.component';
+import {ShowNoSelectSeatComponent} from './noselectseat/noSelectSeat.component';
 
 const ShowRoutes: Routes = [{
   path: 'show/:type/:userId',
@@ -11,8 +13,17 @@ const ShowRoutes: Routes = [{
       path: '',
       component: ShowComponent,
     },
+    {
+      path: 'select/:showId',
+      component: ShowSelectSeatComponent,
+    },
+    {
+      path: 'noSelect/:showId',
+      component: ShowNoSelectSeatComponent,
+    }
   ]
-},];
+},
+];
 
 @NgModule({
   imports: [
