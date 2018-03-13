@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ShowComponent} from './show.component';
 import {ShowSelectSeatComponent} from './selectseat/selectSeat.component';
 import {ShowNoSelectSeatComponent} from './noselectseat/noSelectSeat.component';
+import {DisPlayShowComponent} from './displayshow/disPlayShow.component';
 
 const ShowRoutes: Routes = [{
   path: 'show/:type/:userId',
@@ -11,7 +12,11 @@ const ShowRoutes: Routes = [{
   children: [
     {
       path: '',
-      component: ShowComponent,
+      component: DisPlayShowComponent
+    },
+    {
+      path: 'disPlay',
+      component: DisPlayShowComponent
     },
     {
       path: 'select/:showId',

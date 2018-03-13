@@ -3,4 +3,5 @@ export class Ticket {
   orderId: number;
   seatId: number;
   cost: number;
+  level: string;
 }

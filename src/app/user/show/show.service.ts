@@ -9,6 +9,7 @@ import {ResultMessage} from '../../entity/resultmessage';
 export class ShowService {
 
   userId: number;
+  showType: string;
 
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
@@ -39,6 +40,15 @@ export class ShowService {
   }
 
 
+  setShowTyep(showType: string) {
+    this.showType = showType;
+  }
+
+  getShowType() {
+    return this.showType;
+  }
+
+
   getShowList(showType: string): Promise<Show[]> {
     const data = new URLSearchParams();
     data.append('showType', showType);
@@ -66,9 +76,12 @@ export class ShowService {
       .catch(this.handleError);
   }
 
-  reserveChoose(orderJson: string): Promise<ResultMessage> {
+  reserveChoose(showIdListJson: string, userId: number, venueId: number, showId: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
-    data.append('orderJson', orderJson);
+    data.append('showIdListJson', showIdListJson);
+    data.append('userId', userId + '');
+    data.append('venueId', venueId + '');
+    data.append('showId', showId + '');
     return this.http.post(this.reserveChooseUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)

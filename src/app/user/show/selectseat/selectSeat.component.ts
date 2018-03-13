@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Show} from '../../../entity/show';
 import {ShowService} from '../show.service';
 import {ShowSeat} from '../../../entity/showseat';
+import {ResultMessage} from '../../../entity/resultmessage';
 
 @Component({
   selector: 'app-show-select',
@@ -15,7 +16,12 @@ export class ShowSelectSeatComponent implements OnInit {
   showId: number;
   show: Show = new Show();
 
-  seatlist: ShowSeat[] = [];
+  showSeatList: ShowSeat[] = [];
+  seatList: ShowSeat[] = [];
+
+  selectFirst = 0;
+  selectSecond = 0;
+  selectThird = 0;
 
   constructor(private showService: ShowService,
               private route: ActivatedRoute,
@@ -31,11 +37,79 @@ export class ShowSelectSeatComponent implements OnInit {
   }
 
   getShow() {
-    this.showService.getShowById(this.showId).then(show => this.show = show);
+    this.showService.getShowById(this.showId).then(show => {
+      this.setShow(show);
+    });
   }
 
+  setShow(show: Show) {
+    console.log(show);
+    this.show = show;
+    // 空闲的座位
+    for (let i = 0; i < this.show.seatList.length; i++) {
+      if (this.show.seatList[i].isBooked === false) {
+        this.showSeatList.push(this.show.seatList[i]);
+      }
+    }
+  }
+
+  // todo 选购之后不能多选
   checkTicketNumber(seat: ShowSeat) {
-    console.log(seat);
+    let isSaved = false;
+    for (let i = 0; i < this.seatList.length; i++) {
+      if (seat.id === this.seatList[i].id) {
+        isSaved = true;
+        if (this.seatList[i].level === '一等座') {
+          this.selectFirst--;
+        } else if (this.seatList[i].level === '二等座') {
+          this.selectSecond--;
+        } else {
+          this.selectThird--;
+        }
+        this.seatList.splice(i, 1);
+        break;
+      }
+    }
+    if (isSaved === false) {
+      if (this.seatList.length >= 6) {
+        console.log('选座购票最多只可选择6张');
+      } else {
+        this.seatList.push(seat);
+        if (seat.level === '一等座') {
+          this.selectFirst++;
+        } else if (seat.level === '二等座') {
+          this.selectSecond++;
+        } else {
+          this.selectThird++;
+        }
+      }
+    }
+    console.log(this.seatList);
+    console.log(this.selectThird);
+    console.log(this.selectSecond);
+    console.log(this.selectFirst);
+  }
+
+  buyTickets() {
+    if (this.seatList.length > 6) {
+      alert('选座购票最多只可选择6张');
+    } else {
+      const seatIdList = [];
+      for (let i = 0; i < this.seatList.length; i++) {
+        seatIdList.push(this.seatList[i].id);
+      }
+      const seatIdJson = JSON.stringify(seatIdList);
+      this.showService.reserveChoose(seatIdJson, this.userId, this.show.venueId, this.showId)
+        .then(result => this.checkReserveResult(result));
+    }
+  }
+
+  checkReserveResult(result: ResultMessage) {
+    if (result.toString() === 'SUCCESS') {
+      alert('订票成功');
+    } else {
+      alert('订票失败，请刷新重试');
+    }
   }
 
 

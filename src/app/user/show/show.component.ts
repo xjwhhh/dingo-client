@@ -28,12 +28,13 @@ export class ShowComponent implements OnInit {
     console.log(this.userId);
     console.log(this.showType);
     this.showService.setUserId(this.userId);
-    this.getShowList();
+    this.showService.setShowTyep(this.showType);
+    // this.getShowList();
   }
 
-  getShowList() {
-    this.showService.getShowByType(this.showType).then(list => this.showList = list);
-  }
+  // getShowList() {
+  //   this.showService.getShowByType(this.showType).then(list => this.showList = list);
+  // }
 
 
 }
