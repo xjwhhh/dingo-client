@@ -25,7 +25,7 @@ const ShowRoutes: Routes = [{
     {
       path: 'noSelect/:showId',
       component: ShowNoSelectSeatComponent,
-    }
+    },
   ]
 },
 ];

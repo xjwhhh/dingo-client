@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import {Router} from '@angular/router';
 import {Show} from '../../entity/show';
 import {ResultMessage} from '../../entity/resultmessage';
+import {Order} from '../../entity/order';
 
 @Injectable()
 export class ShowService {
@@ -21,6 +22,7 @@ export class ShowService {
   private reserveNoChooseUrl = 'http://localhost:8080/order/saveOrderNoChoose';
   private payOrderUrl = 'http://localhost:8080/order/pay';
   private cancelOrderUrl = 'http://localhost:8080/order/cancel';
+  private getOrderUrl = 'http://localhost:8080/order/getOrderById';
 
 
   constructor(private http: Http, private router: Router) {
@@ -76,15 +78,15 @@ export class ShowService {
       .catch(this.handleError);
   }
 
-  reserveChoose(showIdListJson: string, userId: number, venueId: number, showId: number): Promise<ResultMessage> {
+  reserveChoose(seatIdListJson: string, userId: number, venueId: number, showId: number): Promise<number> {
     const data = new URLSearchParams();
-    data.append('showIdListJson', showIdListJson);
+    data.append('seatIdListJson', seatIdListJson);
     data.append('userId', userId + '');
     data.append('venueId', venueId + '');
     data.append('showId', showId + '');
     return this.http.post(this.reserveChooseUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as ResultMessage)
+      .then(response => response.json() as number)
       .catch(this.handleError);
   }
 
@@ -94,6 +96,15 @@ export class ShowService {
     return this.http.post(this.reserveNoChooseUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)
+      .catch(this.handleError);
+  }
+
+  getOrderById(orderId: number): Promise<Order> {
+    const data = new URLSearchParams();
+    data.append('orderId', orderId + '');
+    return this.http.post(this.getOrderUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as Order)
       .catch(this.handleError);
   }
 

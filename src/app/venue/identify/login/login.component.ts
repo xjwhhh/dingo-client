@@ -33,7 +33,7 @@ export class VenueLoginComponent implements OnInit {
   }
 
   check(venue: Venue) {
-    if (venue.id == -1) {
+    if (venue.id === -1) {
       alert('用户名或密码错误');
     } else {
       alert('登录成功');

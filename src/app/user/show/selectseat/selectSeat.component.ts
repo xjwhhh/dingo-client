@@ -43,11 +43,16 @@ export class ShowSelectSeatComponent implements OnInit {
   }
 
   setShow(show: Show) {
-    console.log(show);
+    // console.log(show);
     this.show = show;
     // 空闲的座位
+    // console.log(this.show.seatList);
+    // console.log(this.show.seatList[0]);
+    // console.log(this.show.seatList[0].id);
     for (let i = 0; i < this.show.seatList.length; i++) {
-      if (this.show.seatList[i].isBooked === false) {
+      // console.log(this.show.seatList[i].booked);
+      // console.log(typeof (this.show.seatList[i].booked));
+      if (this.show.seatList[i].booked === false) {
         this.showSeatList.push(this.show.seatList[i]);
       }
     }
@@ -85,9 +90,9 @@ export class ShowSelectSeatComponent implements OnInit {
       }
     }
     console.log(this.seatList);
-    console.log(this.selectThird);
-    console.log(this.selectSecond);
-    console.log(this.selectFirst);
+    // console.log(this.selectThird);
+    // console.log(this.selectSecond);
+    // console.log(this.selectFirst);
   }
 
   buyTickets() {
@@ -95,18 +100,21 @@ export class ShowSelectSeatComponent implements OnInit {
       alert('选座购票最多只可选择6张');
     } else {
       const seatIdList = [];
+      // console.log(this.seatList);
       for (let i = 0; i < this.seatList.length; i++) {
         seatIdList.push(this.seatList[i].id);
       }
       const seatIdJson = JSON.stringify(seatIdList);
       this.showService.reserveChoose(seatIdJson, this.userId, this.show.venueId, this.showId)
-        .then(result => this.checkReserveResult(result));
+        .then(orderId => this.checkReserveResult(orderId));
     }
   }
 
-  checkReserveResult(result: ResultMessage) {
-    if (result.toString() === 'SUCCESS') {
+  checkReserveResult(orderId: number) {
+    console.log(orderId);
+    if (orderId !== -1) {
       alert('订票成功');
+      // this.router.navigate(['../pay', orderId]);
     } else {
       alert('订票失败，请刷新重试');
     }
