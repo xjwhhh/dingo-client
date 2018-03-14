@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Order} from '../../entity/order';
 import {PayOrderService} from './payOrder.service';
 import {User} from '../../entity/user';
+import {ResultMessage} from '../../entity/resultmessage';
 
 @Component({
   selector: 'app-show-pay',
@@ -40,6 +41,21 @@ export class PayOrderComponent implements OnInit {
   }
 
   pay() {
+    if (this.user.balance < this.order.cost) {
+      alert('对不起，账户余额不足');
+    } else {
+      this.payOrderService.payOrder(this.orderId).then(result => this.checkPayResult(result));
+    }
+  }
+
+  checkPayResult(result: ResultMessage) {
+    console.log(result);
+    if (result.toString() === 'SUCCESS') {
+      alert('付款成功');
+      // this.router.navigate(['../pay', orderId]);
+    } else {
+      alert('付款失败，请稍后重试');
+    }
   }
 
 

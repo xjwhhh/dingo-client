@@ -18,7 +18,7 @@
   </div>
 
   <div class="row">
-    <div *ngFor="let order of orderList">
+    <div *ngFor="let order of orderList" (click)="gotoOrderDetail(order.id)">
       <div class="row">
         <div class="col-md-3">
           <label>订单ID:{{order.id}}</label>
@@ -37,6 +37,12 @@
         <div class="col-md-3">
           <label>时间:{{order.orderTime}}</label>
         </div>
+      </div>
+      <div class="row">
+        <button *ngIf="unPaid" type="button" (click)="gotoPay(order.id)">支付</button>
+      </div>
+      <div class="row">
+        <button *ngIf="unPaid||unTicketConfirmed||unStart" type="button" (click)="cancel(order.id)">取消</button>
       </div>
     </div>
   </div>

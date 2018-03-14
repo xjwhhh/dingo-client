@@ -90,9 +90,14 @@ export class ShowService {
       .catch(this.handleError);
   }
 
-  reserveNoChoose(orderJson: string): Promise<ResultMessage> {
+  reserveNoChoose(one: number, two: number, three: number, userId: number, venueId: number, showId: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
-    data.append('orderJson', orderJson);
+    data.append('one', one + '');
+    data.append('two', two + '');
+    data.append('three', three + '');
+    data.append('userId', userId + '');
+    data.append('venueId', venueId + '');
+    data.append('showId', showId + '');
     return this.http.post(this.reserveNoChooseUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)

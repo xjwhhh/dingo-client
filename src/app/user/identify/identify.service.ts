@@ -19,6 +19,7 @@ export class IdentifyService {
   private getUserOrderUrl = 'http://localhost:8080/order/getOrderByUserId';
   private updateUserBasicInfoUrl = 'http://localhost:8080/user/update';
   private emailConfirmationUrl = 'http://localhost:8080/user/emailConfirmation';
+  private cancelOrderUrl = 'http://localhost:8080/order/cancel';
 
 
   constructor(private http: Http, private router: Router) {
@@ -87,13 +88,22 @@ export class IdentifyService {
       .catch(this.handleError);
   }
 
-  getUserOrder(userId: number, orderState: OrderState): Promise<Order[]> {
+  getUserOrder(userId: number, orderState: string): Promise<Order[]> {
     const data = new URLSearchParams();
     data.append('userId', userId + '');
     data.append('orderState', orderState + '');
     return this.http.post(this.getUserOrderUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Order[])
+      .catch(this.handleError);
+  }
+
+  cancelOrder(orderId: number): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('orderId', orderId + '');
+    return this.http.post(this.cancelOrderUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
 

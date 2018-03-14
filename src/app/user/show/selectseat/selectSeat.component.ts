@@ -97,7 +97,7 @@ export class ShowSelectSeatComponent implements OnInit {
 
   buyTickets() {
     if (this.seatList.length > 6) {
-      alert('选座购票最多只可选择6张');
+      alert('选座购票每单最多只可选择6张');
     } else {
       const seatIdList = [];
       // console.log(this.seatList);
