@@ -18,8 +18,8 @@ import {TicketManagerSettleModule} from './ticketmanager/settle/settle.module';
 import {TicketManagerExamineModule} from './ticketmanager/examine/examine.module';
 import {TicketManagerStatisticsModule} from './ticketmanager/statisticsinfo/statisticsInfo.module';
 import {VenuePublishShowModule} from './venue/publishshow/publishShow.module';
+import {PayOrderModule} from './user/pay/payOrder.module';
 
-// import {TicketManagerModule} from './ticketmanager/ticketManager.module';
 
 
 @NgModule({
@@ -32,6 +32,7 @@ import {VenuePublishShowModule} from './venue/publishshow/publishShow.module';
     AppRoutingModule,
     IdentifyModule,
     ShowModule,
+    PayOrderModule,
     VenueIdentifyModule,
     VenuePublishShowModule,
     TicketManagerIdentifyModule,

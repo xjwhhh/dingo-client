@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <label>用户名:{{user.name}}</label>
+  </div>
+  <div class="row">
+    <label>等级:{{user.level}}</label>
+  </div>
+  <div class="row">
+    <label>余额:{{user.balance}}</label>
+  </div>
+  <div class="row">
+    <label>订单ID:{{order.id}}</label>
+  </div>
+  <div class="row">
+    <label>订单时间:{{order.orderTime}}</label>
+  </div>
+  <div class="row">
+    <label>订单价格:{{order.cost}}</label>
+  </div>
+  <div *ngFor="let ticket of order.ticketList">
+    <div class="row">
+      <label>取票ID:{{ticket.id}}</label>
+    </div>
+    <div class="row">
+      <label>座位ID:{{ticket.seatId}}</label>
+    </div>
+    <div class="row">
+      <label>价格:{{ticket.cost}}</label>
+    </div>
+    <div class="row">
+      <label>座位等级:{{ticket.level}}</label>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" (click)="pay()">支付</button>
+  </div>
+</div>

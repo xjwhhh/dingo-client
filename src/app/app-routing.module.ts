@@ -12,6 +12,7 @@ import {TicketManagerExamineComponent} from './ticketmanager/examine/examine.com
 import {TicketManagerSettleComponent} from './ticketmanager/settle/settle.component';
 import {TicketManagerStatisticsInfoComponent} from './ticketmanager/statisticsinfo/statisticsInfo.component';
 import {VenuePublishShowComponent} from './venue/publishshow/publishShow.component';
+import {PayOrderComponent} from './user/pay/payOrder.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
     data: {
       preload: true
     }
+  },
+  {
+    path: 'pay',
+    component: PayOrderComponent,
   },
   {
     path: 'venueIdentify',
