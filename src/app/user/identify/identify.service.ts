@@ -20,6 +20,8 @@ export class IdentifyService {
   private updateUserBasicInfoUrl = 'http://localhost:8080/user/update';
   private emailConfirmationUrl = 'http://localhost:8080/user/emailConfirmation';
   private cancelOrderUrl = 'http://localhost:8080/order/cancel';
+  private cancelUserUrl = 'http://localhost:8080/user/cancel';
+  private exchangeCouponUrl = 'http://localhost:8080/user/cancel';
 
 
   constructor(private http: Http, private router: Router) {
@@ -88,6 +90,15 @@ export class IdentifyService {
       .catch(this.handleError);
   }
 
+  cancelUser(userId: number): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('userId', userId + '');
+    return this.http.post(this.cancelUserUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as User)
+      .catch(this.handleError);
+  }
+
   getUserOrder(userId: number, orderState: string): Promise<Order[]> {
     const data = new URLSearchParams();
     data.append('userId', userId + '');
@@ -106,5 +117,17 @@ export class IdentifyService {
       .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
+
+
+  exchangeCoupon(userId: number, couponType: number): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('userId', userId + '');
+    data.append('couponType', couponType + '');
+    return this.http.post(this.exchangeCouponUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
+      .catch(this.handleError);
+  }
+
 
 }

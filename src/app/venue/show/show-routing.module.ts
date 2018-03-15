@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {VenueShowComponent} from './show.component';
+import {VenueCheckTicketComponent} from './check/checkTicket.component';
 
 const ShowRoutes: Routes = [{
   path: 'show',
@@ -11,6 +12,10 @@ const ShowRoutes: Routes = [{
       path: '',
       component: VenueShowComponent,
     },
+    {
+      path: 'checkTicket',
+      component: VenueCheckTicketComponent,
+    }
   ]
 },
 ];

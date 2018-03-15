@@ -1,4 +1,5 @@
 import {VIPLevel} from './VIPLevel';
+import {Coupon} from './coupon';
 
 export class User {
   id: number;
@@ -12,4 +13,5 @@ export class User {
   totalIntegral: number;
   currentIntegral: number;
   isCancelled: boolean;
+  couponList: Coupon[];
 }

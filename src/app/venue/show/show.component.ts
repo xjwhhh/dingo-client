@@ -41,5 +41,10 @@ export class VenueShowComponent implements OnInit {
     this.showService.getShowByType(this.showType).then(showList => this.showList = showList);
   }
 
+  gotoCheckTicket(showId: number) {
+    this.showService.setShowId(showId);
+    this.router.navigate(['/checkTicket']);
+  }
+
 
 }

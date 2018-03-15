@@ -4,4 +4,5 @@ export class Ticket {
   seatId: number;
   cost: number;
   level: string;
+  come: boolean;
 }

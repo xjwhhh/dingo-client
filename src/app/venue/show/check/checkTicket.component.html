@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <label>演出ID</label>
+  </div>
+  <div class="row">
+    <label>演出名称</label>
+  </div>
+  <div class="row">
+    <label>演出时间</label>
+  </div>
+  <div *ngFor="let order of orderList">
+    <label>{{order.id}}</label>
+    <div *ngFor="let ticket of order.ticketList">
+      <label>{{ticket.id}}</label>
+      <button type="button" (click)="doCheck(ticket.id)">检票登记</button>
+    </div>
+  </div>
+</div>

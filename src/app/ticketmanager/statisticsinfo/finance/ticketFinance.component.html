@@ -1,5 +1,16 @@
 <div class="container">
-  <div *ngFor="let user of userList">
-    <div class="row"></div>
+  <div class="row">
+    <input type="text" #text>
+  </div>
+  <div class="row">
+    <button type="button" (click)="searchTicketFinance(text.value)">搜索</button>
+  </div>
+  <div *ngFor="let ticketFinance of showTicketFinanceList">
+    <div class="row">
+      <label>场馆ID:{{ticketFinance.venueId}}</label>
+    </div>
+    <div class="row">
+      <label>金额:{{ticketFinance.cost}}</label>
+    </div>
   </div>
 </div>

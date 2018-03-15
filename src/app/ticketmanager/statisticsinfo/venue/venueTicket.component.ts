@@ -33,7 +33,7 @@ export class TicketManagerVenueTicketComponent implements OnInit {
   searchVenue(text: string) {
     this.showVenueList.splice(0, this.showVenueList.length);
     for (let i = 0; i < this.venueList.length; i++) {
-      if ((this.venueList[i].id === parseInt(text, 10)) || this.venueList[i].name.indexOf(text) !== -1) {
+      if ((this.venueList[i].id === parseInt(text, 10)) || (this.venueList[i].name.indexOf(text) !== -1)) {
         this.showVenueList.push(this.venueList[i]);
       }
     }

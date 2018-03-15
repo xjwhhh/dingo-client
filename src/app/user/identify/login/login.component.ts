@@ -33,9 +33,11 @@ export class LoginComponent implements OnInit {
   }
 
   check(user: User) {
-    window.open('https://zhidao.baidu.com/question/449950170.html');
-    if (user.id == null) {
-      alert('用户名或密码错误');
+    // window.open('https://zhidao.baidu.com/question/449950170.html');
+    if (user.id === -1) {
+      alert('用户名或密码错误，或者该用户已被注销');
+    } else if (user.id === -2) {
+      alert('该用户已被取消资格');
     } else {
       alert('登录成功');
       this.identifyService.setUserId(user.id);

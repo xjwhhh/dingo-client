@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
-import {TicketManager} from '../../entity/ticketmanager';
-import {VenueApplicationType} from '../../entity/VenueApplicationType';
-import {VenueApplication} from '../../entity/VenueApplication';
 import {ResultMessage} from '../../entity/resultmessage';
 import {ShowEarning} from '../../entity/showEarning';
 
@@ -17,7 +14,7 @@ export class TicketManagerSettleService {
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
-  getUnsettledShowEarningUrl = 'http://localhost:8080/ticketManager/getUnSettledShowEarning';
+  getUnsettledShowEarningUrl = 'http://localhost:8080/ticketManager/UnSettledShowEarning';
   doSettleUrl = 'http://localhost:8080/ticketManager/doSettle';
 
   private handleError(error: any): Promise<any> {

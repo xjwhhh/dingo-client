@@ -32,7 +32,7 @@ export class TicketManagerUserTicketComponent implements OnInit {
   searchUser(text: string) {
     this.showUserList.splice(0, this.showUserList.length);
     for (let i = 0; i < this.userList.length; i++) {
-      if ((this.userList[i].id === parseInt(text, 10)) || this.userList[i].name.indexOf(text) !== -1) {
+      if ((this.userList[i].id === parseInt(text, 10)) || (this.userList[i].name.indexOf(text) !== -1)) {
         this.showUserList.push(this.userList[i]);
       }
     }

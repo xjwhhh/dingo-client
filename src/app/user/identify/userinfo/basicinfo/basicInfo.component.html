@@ -43,6 +43,15 @@
       <label>{{user.totalIntegral}}</label>
     </div>
   </div>
+  <div class="row">
+    <p><label>100积分卷(满100减10):</label>{{firstCouponNumber}}张</p>
+  </div>
+  <div class="row">
+    <p><label>500积分卷(满1000减100):</label>{{secondCouponNumber}}张</p>
+  </div>
+  <div class="row">
+    <p><label>1000积分卷(满200减20):</label>{{thirdCouponNumber}}张</p>
+  </div>
   <div class="row" style="height: 10px;"></div>
   <div class="row">
     <div class="col-md-2">
@@ -62,11 +71,39 @@
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <p>100积分，满100减10</p>
+    </div>
+    <div class="col-md-6">
+      <button type="button"></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p>500积分，满1000减100</p>
+    </div>
+    <div class="col-md-6">
+      <button type="button"></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p>1000积分，满2000减200</p>
+    </div>
+    <div class="col-md-6">
+      <button type="button"></button>
+    </div>
+  </div>
+
   <!--<div class="col-md-offset-2 col-md-10">-->
     <!--<button type="button" class="btn btn-default">邮箱验证</button>-->
   <!--</div>-->
   <!--<div class="row" style="height: 10px;"></div>-->
   <div class="col-md-offset-2 col-md-10">
     <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
+  </div>
+  <div class="row">
+    <button type="button" (click)="cancel()"></button>
   </div>
 </div>

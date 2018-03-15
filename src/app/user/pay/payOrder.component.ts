@@ -18,6 +18,15 @@ export class PayOrderComponent implements OnInit {
   order: Order = new Order();
   user: User = new User();
 
+
+  firstCouponNumber = 0;
+  secondCouponNumber = 0;
+  thirdCouponNumber = 0;
+
+  firstExist = false;
+  secondExist = false;
+  thirdExist = false;
+
   constructor(private payOrderService: PayOrderService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -33,11 +42,38 @@ export class PayOrderComponent implements OnInit {
   }
 
   getUser() {
-    this.payOrderService.getUserBasicInfo(this.userId).then(user => this.user = user);
+    this.payOrderService.getUserBasicInfo(this.userId).then(user => this.setUser(user));
+  }
+
+  setUser(user: User) {
+    this.user = user;
+    for (let i = 0; i < user.couponList.length; i++) {
+      if (user.couponList[i].type === 1) {
+        this.firstCouponNumber++;
+      } else if (user.couponList[i].type === 2) {
+        this.secondCouponNumber++;
+      } else if (user.couponList[i].type === 3) {
+        this.thirdCouponNumber++;
+      }
+    }
   }
 
   getOrder() {
-    this.payOrderService.getOrderById(this.orderId).then(order => this.order = order);
+    this.payOrderService.getOrderById(this.orderId).then(order => this.setOrder(order));
+  }
+
+  setOrder(order: Order) {
+    this.order = order;
+    if (this.order.cost >= 2000) {
+      this.thirdExist = true;
+      this.secondExist = true;
+      this.firstExist = true;
+    } else if (this.order.cost >= 1000) {
+      this.secondExist = true;
+      this.firstExist = true;
+    } else if (this.order.cost >= 100) {
+      this.firstExist = true;
+    }
   }
 
   pay() {

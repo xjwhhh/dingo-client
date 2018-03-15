@@ -5,11 +5,14 @@ import {Router} from '@angular/router';
 import {Show} from '../../entity/show';
 import {ResultMessage} from '../../entity/resultmessage';
 import {ProgressType} from '../../entity/progresstype';
+import {OrderState} from '../../entity/orderstate';
+import {Order} from '../../entity/order';
 
 @Injectable()
 export class VenueShowService {
 
   venueId: number;
+  showId: number;
 
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
@@ -18,6 +21,8 @@ export class VenueShowService {
   private getShowByTypeUrl = 'http://localhost:8080/show/getShowByType';
   private getShowByIdUrl = 'http://localhost:8080/show/getShowById';
   private publishShowUrl = 'http://localhost:8080/venue/publishShow';
+  private getShowOrderUrl = 'http://localhost:8080/order/getOrderByShowId';
+  private doCheckTicketUrl = 'http://localhost:8080/order/checkTicket';
 
 
   constructor(private http: Http, private router: Router) {
@@ -34,6 +39,14 @@ export class VenueShowService {
 
   getVenueId() {
     return this.venueId;
+  }
+
+  setShowId(showId: number) {
+    this.showId = showId;
+  }
+
+  getShowId() {
+    return this.showId;
   }
 
 
@@ -55,12 +68,12 @@ export class VenueShowService {
       .catch(this.handleError);
   }
 
-  getShowById(showId: number): Promise<Show[]> {
+  getShowById(showId: number): Promise<Show> {
     const data = new URLSearchParams();
     data.append('showId', showId + '');
     return this.http.post(this.getShowByIdUrl, data, this.options)
       .toPromise()
-      .then(response => response.json() as Show[])
+      .then(response => response.json() as Show)
       .catch(this.handleError);
   }
 
@@ -72,6 +85,24 @@ export class VenueShowService {
     return this.http.post(this.publishShowUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Show[])
+      .catch(this.handleError);
+  }
+
+  getShowOrder(showId: number): Promise<Order[]> {
+    const data = new URLSearchParams();
+    data.append('showId', showId + '');
+    return this.http.post(this.getShowOrderUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as Order[])
+      .catch(this.handleError);
+  }
+
+  doCheck(ticketId: number): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('ticketId', ticketId + '');
+    return this.http.post(this.doCheckTicketUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as Order[])
       .catch(this.handleError);
   }
 
