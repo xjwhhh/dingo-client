@@ -67,43 +67,47 @@
       <label>是否验证</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.isConfirmed}}</label>
+      <label>{{user.confirmed}}</label>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <p>100积分，满100减10</p>
     </div>
-    <div class="col-md-6">
-      <button type="button"></button>
+    <div class="col-md-3">
+      <p><input type="number" #firstCouponNumbers>张</p>
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="exchangeCoupon(1,firstCouponNumbers.value)">兑换</button>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <p>500积分，满1000减100</p>
     </div>
-    <div class="col-md-6">
-      <button type="button"></button>
+    <div class="col-md-3">
+      <p><input type="number" #secondCouponNumbers>张</p>
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="exchangeCoupon(2,secondCouponNumbers.value)">兑换</button>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <p>1000积分，满2000减200</p>
     </div>
-    <div class="col-md-6">
-      <button type="button"></button>
+    <div class="col-md-3">
+      <p><input type="number" #thirdCouponNumbers>张</p>
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="exchangeCoupon(3,thirdCouponNumbers.value)">兑换</button>
     </div>
   </div>
-
-  <!--<div class="col-md-offset-2 col-md-10">-->
-    <!--<button type="button" class="btn btn-default">邮箱验证</button>-->
-  <!--</div>-->
-  <!--<div class="row" style="height: 10px;"></div>-->
   <div class="col-md-offset-2 col-md-10">
     <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
   </div>
-  <div class="row">
-    <button type="button" (click)="cancel()"></button>
+  <div class="col-md-offset-2 col-md-10">
+    <button type="button" class="btn btn-default" (click)="cancel()">取消会员（注销）</button>
   </div>
 </div>

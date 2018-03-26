@@ -30,6 +30,7 @@ export class DisPlayShowComponent implements OnInit {
     // this.showService.setUserId(this.userId);
     this.userId = this.showService.getUserId();
     this.showType = this.showService.getShowType();
+    console.log('234567');
     this.getShowList();
   }
 

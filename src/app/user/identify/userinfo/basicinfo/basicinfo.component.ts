@@ -27,10 +27,6 @@ export class UserBasicInfoComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.route.params.subscribe((params: Params) => {
-    //   this.userId = params['userId'];
-    // });
-    // // this.showType = this.route.snapshot.params['type'];
     this.userId = this.identifyService.getUserId();
     console.log(this.userId);
     this.getUserBasicInfo();
@@ -70,23 +66,23 @@ export class UserBasicInfoComponent implements OnInit {
     }
   }
 
-  exchangeCoupon(couponType: number) {
+  exchangeCoupon(couponType: number, couponNumber: number) {
     let cost = 0;
     switch (couponType) {
       case 1:
-        cost = this.firstCouponCost;
+        cost = this.firstCouponCost * couponNumber;
         break;
       case 2:
-        cost = this.secondCouponCost;
+        cost = this.secondCouponCost * couponNumber;
         break;
       case 3:
-        cost = this.thirdCouponCost;
+        cost = this.thirdCouponCost * couponNumber;
         break;
     }
-    if (this.user.currentIntegral <= cost) {
+    if (this.user.currentIntegral < cost) {
       alert('积分余额不足');
     } else {
-      this.identifyService.exchangeCoupon(this.userId, couponType).then(result => this.checkExchangeCoupon(result));
+      this.identifyService.exchangeCoupon(this.userId, couponType, couponNumber).then(result => this.checkExchangeCoupon(result));
     }
 
   }
@@ -97,5 +93,6 @@ export class UserBasicInfoComponent implements OnInit {
     } else {
       alert('兑换优惠券失败，请稍后重试');
     }
+    this.identifyService.getUserBasicInfo(this.userId).then(user => this.setUser(user));
   }
 }

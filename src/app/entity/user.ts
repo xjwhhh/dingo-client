@@ -6,12 +6,12 @@ export class User {
   account: string;
   password: string;
   emailAddress: string;
-  isConfirmed: boolean;
+  confirmed: boolean;
   name: string;
   level: string;
   balance: number;
   totalIntegral: number;
   currentIntegral: number;
-  isCancelled: boolean;
+  cancelled: boolean;
   couponList: Coupon[];
 }

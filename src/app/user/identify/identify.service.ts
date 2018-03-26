@@ -21,7 +21,7 @@ export class IdentifyService {
   private emailConfirmationUrl = 'http://localhost:8080/user/emailConfirmation';
   private cancelOrderUrl = 'http://localhost:8080/order/cancel';
   private cancelUserUrl = 'http://localhost:8080/user/cancel';
-  private exchangeCouponUrl = 'http://localhost:8080/user/cancel';
+  private exchangeCouponUrl = '';
 
 
   constructor(private http: Http, private router: Router) {
@@ -119,10 +119,11 @@ export class IdentifyService {
   }
 
 
-  exchangeCoupon(userId: number, couponType: number): Promise<ResultMessage> {
+  exchangeCoupon(userId: number, couponType: number, couponNumber: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
     data.append('userId', userId + '');
     data.append('couponType', couponType + '');
+    data.append('couponNumber', couponNumber + '');
     return this.http.post(this.exchangeCouponUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)

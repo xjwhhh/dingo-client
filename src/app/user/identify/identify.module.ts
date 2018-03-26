@@ -13,6 +13,7 @@ import {UserBasicInfoComponent} from './userinfo/basicinfo/basicinfo.component';
 import {UserOrderInfoComponent} from './userinfo/orderinfo/orderInfo.component';
 import {UserStatisticsInfoComponent} from './userinfo/statisticsinfo/statisticsInfo.component';
 import {UserUpdateBasicInfoComponent} from './userinfo/updatebasicinfo/updateBasicInfo.component';
+import {EmailConfirmationComponent} from './emailConfirmation/emailConfirmation.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {UserUpdateBasicInfoComponent} from './userinfo/updatebasicinfo/updateBas
   declarations: [
     RegisterComponent,
     LoginComponent,
+    EmailConfirmationComponent,
     IdentifyComponent,
     UserInfoComponent,
     UserBasicInfoComponent,

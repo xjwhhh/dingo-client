@@ -41,7 +41,14 @@ export class LoginComponent implements OnInit {
     } else {
       alert('登录成功');
       this.identifyService.setUserId(user.id);
-      this.router.navigate(['/identify/userInfo', user.id]);
+      // console.log(user);
+      // console.log(user.confirmed);
+      if (user.confirmed) {
+        this.router.navigate(['/identify/userInfo', user.id]);
+      } else {
+        this.router.navigate(['/identify/emailConfirmation']);
+      }
+
     }
   }
 
