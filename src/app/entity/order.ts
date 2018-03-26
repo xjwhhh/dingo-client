@@ -11,6 +11,6 @@ export class Order {
   ticketConfirmedTime: string;
   payTime: string;
   cancelTime: string;
-  state: OrderState;
+  state: string;
   ticketList: Ticket[];
 }

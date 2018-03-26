@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       // console.log(user);
       // console.log(user.confirmed);
       if (user.confirmed) {
-        this.router.navigate(['/identify/userInfo', user.id]);
+        this.router.navigate(['/identify/userInfo/' + user.id + '/basicInfo']);
       } else {
         this.router.navigate(['/identify/emailConfirmation']);
       }

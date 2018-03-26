@@ -13,7 +13,7 @@ import {ResultMessage} from '../../../../entity/resultmessage';
 })
 export class UserOrderInfoComponent implements OnInit {
   userId: number;
-  orderList: Order[];
+  orderList: Order[] = [];
   orderState: string;
 
   unPaid = false;
@@ -26,10 +26,11 @@ export class UserOrderInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.userId = params['userId'];
-    });
+    // this.route.params.subscribe((params: Params) => {
+    //   this.userId = params['userId'];
+    // });
     // this.showType = this.route.snapshot.params['type'];
+    this.userId = this.identifyService.getUserId();
     console.log(this.userId);
   }
 
@@ -53,27 +54,41 @@ export class UserOrderInfoComponent implements OnInit {
     // }
     this.reset();
     switch (orderStateString) {
-      case 'unPaid':
+      case 'UNPAID':
         this.unPaid = true;
         break;
-      case 'unTicketConfirmed':
+      case 'UNTICKETCONFIRMED':
         this.unTicketConfirmed = true;
         break;
-      case 'unStart':
+      case 'UNSTART':
         this.unStart = true;
         break;
-      case 'end':
+      case 'END':
         this.end = true;
         break;
-      case 'cancelled':
+      case 'CANCELLED':
         this.cancelled = true;
         break;
     }
     this.orderState = orderStateString;
-    this.identifyService.getUserOrder(this.userId, this.orderState).then(orderList => this.orderList = orderList);
+    this.identifyService.getUserOrder(this.userId).then(orderList => {
+      // console.log(orderList);
+      this.setOrderList(orderList);
+    });
+  }
+
+  setOrderList(orderList: Order[]) {
+    // console.log(this.orderState);
+    for (let i = 0; i < orderList.length; i++) {
+      if (orderList[i].state === this.orderState) {
+        // console.log(orderList[i]);
+        this.orderList.push(orderList[i]);
+      }
+    }
   }
 
   reset() {
+    this.orderList.splice(0, this.orderList.length);
     this.unPaid = false;
     this.unTicketConfirmed = false;
     this.unStart = false;
@@ -82,7 +97,7 @@ export class UserOrderInfoComponent implements OnInit {
   }
 
   gotoPay(orderId: number) {
-    this.router.navigate(['../../../../pay', orderId]);
+    this.router.navigate(['../../../../pay/' + this.userId + '/' + orderId]);
   }
 
   cancel(orderId: number) {

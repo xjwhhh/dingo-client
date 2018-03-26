@@ -6,6 +6,7 @@ import {User} from '../../entity/user';
 import {OrderState} from '../../entity/orderstate';
 import {Order} from '../../entity/order';
 import {ResultMessage} from '../../entity/resultmessage';
+import {OrderRecord} from '../../entity/orderRecord';
 
 @Injectable()
 export class IdentifyService {
@@ -17,6 +18,7 @@ export class IdentifyService {
   private loginUrl = 'http://localhost:8080/user/login';
   private getUserBasicInfoUrl = 'http://localhost:8080/user/getUserById';
   private getUserOrderUrl = 'http://localhost:8080/order/getOrderByUserId';
+  private getUserOrderRecordUrl = 'http://localhost:8080/order/getOrderRecordByUserId';
   private updateUserBasicInfoUrl = 'http://localhost:8080/user/update';
   private emailConfirmationUrl = 'http://localhost:8080/user/emailConfirmation';
   private cancelOrderUrl = 'http://localhost:8080/order/cancel';
@@ -99,10 +101,9 @@ export class IdentifyService {
       .catch(this.handleError);
   }
 
-  getUserOrder(userId: number, orderState: string): Promise<Order[]> {
+  getUserOrder(userId: number): Promise<Order[]> {
     const data = new URLSearchParams();
     data.append('userId', userId + '');
-    data.append('orderState', orderState + '');
     return this.http.post(this.getUserOrderUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Order[])
@@ -127,6 +128,15 @@ export class IdentifyService {
     return this.http.post(this.exchangeCouponUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)
+      .catch(this.handleError);
+  }
+
+  getUserOrderRecord(userId: number): Promise<OrderRecord[]> {
+    const data = new URLSearchParams();
+    data.append('userId', userId + '');
+    return this.http.post(this.getUserOrderRecordUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as OrderRecord[])
       .catch(this.handleError);
   }
 
