@@ -26,10 +26,10 @@ export class UserStatisticsInfoComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.identifyService.getUserId();
-    this.getUserOrderList();
+    this.getUserOrderRecordList();
   }
 
-  getUserOrderList() {
+  getUserOrderRecordList() {
     this.identifyService.getUserOrderRecord(this.userId).then(orderRecordList => this.setOrderRecordList(orderRecordList));
   }
 

@@ -34,7 +34,7 @@ export class TicketManagerExamineUpdateComponent implements OnInit {
     this.venueApplicationList = venueApplicationList;
     for (let i = 0; i < this.venueApplicationList.length; i++) {
       console.log(this.venueApplicationList[i].venueJson);
-      const object =  JSON.parse(this.venueApplicationList[i].venueJson);
+      const object = JSON.parse(this.venueApplicationList[i].venueJson);
       this.venueList.push(object);
       // console.log(typeof (object));
       // console.log(object.code);

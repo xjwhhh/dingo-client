@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <p><label>预订数:</label>{{orderNumber}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p><label>退订数:</label>{{cancelNumber}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p><label>销售:</label>{{cost}}</p>
+    </div>
+  </div>
+  <div *ngFor="let orderRecord of orderRecordList">
+    <div class="orderRecord">
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>时间:</label>{{orderRecord.time}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>演出ID:</label>{{orderRecord.showId}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>客户ID:</label>{{orderRecord.userId}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>操作:</label>{{orderRecord.orderAction}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

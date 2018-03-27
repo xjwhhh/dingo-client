@@ -24,6 +24,7 @@ export class VenueShowService {
   private publishShowUrl = 'http://localhost:8080/venue/publishShow';
   private getShowOrderUrl = 'http://localhost:8080/order/getOrderByShowId';
   private doCheckTicketUrl = 'http://localhost:8080/order/checkTicket';
+  private offLineBuyTicketUrl = 'http://localhost:8080/order/offLineBuyTicket';
 
 
   constructor(private http: Http, private router: Router) {
@@ -114,6 +115,21 @@ export class VenueShowService {
     return this.http.post(this.doCheckTicketUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Order[])
+      .catch(this.handleError);
+  }
+
+  offLineBuyTicket(one: number, two: number, three: number, userAccount: number, userPassword: number, venueId: number, showId: number): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    data.append('one', one + '');
+    data.append('two', two + '');
+    data.append('three', three + '');
+    data.append('userAccount', userAccount + '');
+    data.append('userPassword', userPassword + '');
+    data.append('venueId', venueId + '');
+    data.append('showId', showId + '');
+    return this.http.post(this.offLineBuyTicketUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
       .catch(this.handleError);
   }
 

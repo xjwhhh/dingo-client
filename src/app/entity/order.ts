@@ -12,5 +12,6 @@ export class Order {
   payTime: string;
   cancelTime: string;
   state: string;
+  online: boolean;
   ticketList: Ticket[];
 }

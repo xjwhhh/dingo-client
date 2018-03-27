@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {VenueShowComponent} from './show.component';
 import {VenueCheckTicketComponent} from './check/checkTicket.component';
 import {VenueDisPlayShowComponent} from './displayShow/disPlayShow.component';
+import {VenueBuyTicketComponent} from './buyticket/buyTicket.component';
 
 const ShowRoutes: Routes = [{
   path: 'venueShow/:venueId',
@@ -16,6 +17,10 @@ const ShowRoutes: Routes = [{
     {
       path: 'checkTicket',
       component: VenueCheckTicketComponent,
+    },
+    {
+      path: 'buyTicket',
+      component: VenueBuyTicketComponent,
     }
   ]
 },

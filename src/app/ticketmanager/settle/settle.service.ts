@@ -35,7 +35,7 @@ export class TicketManagerSettleService {
 
   doSettle(showEarningId: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
-    data.append('showEarningId',  showEarningId + '');
+    data.append('showEarningId', showEarningId + '');
     return this.http.post(this.doSettleUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)

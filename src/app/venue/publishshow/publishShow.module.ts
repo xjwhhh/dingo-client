@@ -4,8 +4,7 @@ import {PublishShowRoutingModule} from './publishShow-routing.module';
 import {VenuePublishShowComponent} from './publishShow.component';
 import {PublishShowService} from './publishShow.service';
 import {FormsModule} from '@angular/forms';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({

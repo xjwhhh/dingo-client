@@ -3,4 +3,5 @@ export class VenueFinance {
   venueId: number;
   ticketManagerId: number;
   cost: number;
+  online: boolean;
 }

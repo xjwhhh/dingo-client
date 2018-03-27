@@ -4,4 +4,5 @@ export class ShowEarning {
   ticketManagerId: number;
   earning: number;
   isSettled: boolean;
+  online: boolean;
 }

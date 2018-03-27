@@ -6,6 +6,8 @@ import {OrderState} from '../../entity/orderstate';
 import {Order} from '../../entity/order';
 import {ResultMessage} from '../../entity/resultmessage';
 import {Venue} from '../../entity/venue';
+import {OrderRecord} from '../../entity/orderRecord';
+import {VenueFinance} from '../../entity/veneuFinance';
 
 @Injectable()
 export class VenueIdentifyService {
@@ -20,6 +22,8 @@ export class VenueIdentifyService {
   private getVenueBasicInfoUrl = 'http://localhost:8080/venue/getVenueById';
   private updateVenueInfoUrl = 'http://localhost:8080/venue/updateInfo';
   private getVenueOrderUrl = 'http://localhost:8080/order/getOrderByVenueId';
+  private getVenueOrderRecordUrl = 'http://localhost:8080/order/getOrderRecordByVenueId';
+  private getVenueFinanceUrl = 'http://localhost:8080/venue/getVenueFinanceByVenueId';
   private getUserBasicInfoUrl = '';
   private getUserOrderUrl = '';
 
@@ -89,6 +93,24 @@ export class VenueIdentifyService {
     return this.http.post(this.getVenueOrderUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Order[])
+      .catch(this.handleError);
+  }
+
+  getVenueOrderRecord(venueId: number): Promise<OrderRecord[]> {
+    const data = new URLSearchParams();
+    data.append('venueId', venueId + '');
+    return this.http.post(this.getVenueOrderRecordUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as OrderRecord[])
+      .catch(this.handleError);
+  }
+
+  getVenueFinance(venueId: number): Promise<VenueFinance[]> {
+    const data = new URLSearchParams();
+    data.append('venueId', venueId + '');
+    return this.http.post(this.getVenueFinanceUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as VenueFinance[])
       .catch(this.handleError);
   }
 

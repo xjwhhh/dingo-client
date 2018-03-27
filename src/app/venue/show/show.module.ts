@@ -7,6 +7,7 @@ import {VenueShowRoutingModule} from './show-routing.module';
 import {VenueShowService} from './show.service';
 import {VenueCheckTicketComponent} from './check/checkTicket.component';
 import {VenueDisPlayShowComponent} from './displayShow/disPlayShow.component';
+import {VenueBuyTicketComponent} from './buyticket/buyTicket.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {VenueDisPlayShowComponent} from './displayShow/disPlayShow.component';
   declarations: [
     VenueShowComponent,
     VenueDisPlayShowComponent,
-    VenueCheckTicketComponent
+    VenueCheckTicketComponent,
+    VenueBuyTicketComponent
   ],
   providers: [VenueShowService],
   bootstrap: [VenueShowComponent]

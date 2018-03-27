@@ -63,5 +63,10 @@ export class VenueDisPlayShowComponent implements OnInit {
     this.router.navigate(['/venueShow/' + this.venueId + '/checkTicket']);
   }
 
+  gotoBuyTicket(showId: number) {
+    this.showService.setShowId(showId);
+    this.router.navigate(['/venueShow/' + this.venueId + '/buyTicket']);
+  }
+
 
 }

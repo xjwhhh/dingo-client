@@ -22,7 +22,6 @@ import {PayOrderModule} from './user/pay/payOrder.module';
 import {VenueShowModule} from './venue/show/show.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
