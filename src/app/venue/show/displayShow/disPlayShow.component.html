@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" (click)="getShowList('PRESALE')"><label>预售</label></div>
+    <div class="col-md-4" (click)="getShowList('START')"><label>开场</label></div>
+    <div class="col-md-4" (click)="getShowList('END')"><label>结束</label></div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div *ngFor="let show of showList">
+    <div class="show">
+      <div class="row">
+        <p><label>演出ID</label>{{show.id}}</p>
+      </div>
+      <div class="row">
+        <p><label>演出名称</label>{{show.name}}</p>
+      </div>
+      <div class="row">
+        <p><label>演出时间</label>{{show.startTime}}</p>
+      </div>
+      <div class="row">
+        <button type="button" (click)="gotoCheckTicket(show.id)">检票</button>
+      </div>
+    </div>
+  </div>
+
+</div>

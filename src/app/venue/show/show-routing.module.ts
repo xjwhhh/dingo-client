@@ -3,14 +3,15 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {VenueShowComponent} from './show.component';
 import {VenueCheckTicketComponent} from './check/checkTicket.component';
+import {VenueDisPlayShowComponent} from './displayShow/disPlayShow.component';
 
 const ShowRoutes: Routes = [{
-  path: 'show',
+  path: 'venueShow/:venueId',
   component: VenueShowComponent,
   children: [
     {
       path: '',
-      component: VenueShowComponent,
+      component: VenueDisPlayShowComponent,
     },
     {
       path: 'checkTicket',

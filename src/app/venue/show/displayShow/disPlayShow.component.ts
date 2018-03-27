@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {VenueShowService} from './show.service';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
-import {Show} from '../../entity/show';
-import {ProgressType} from '../../entity/progresstype';
+import {Show} from '../../../entity/show';
+import {VenueShowService} from '../show.service';
 
 @Component({
-  selector: 'app-venue-show',
-  templateUrl: './show.component.html',
+  selector: 'app-show-display',
+  templateUrl: './displayShow.component.html',
   // styleUrls: ['./show.component.css'],
 })
-export class VenueShowComponent implements OnInit {
+export class VenueDisPlayShowComponent implements OnInit {
 
   userId: number;
   venueId: number;
@@ -61,7 +60,7 @@ export class VenueShowComponent implements OnInit {
 
   gotoCheckTicket(showId: number) {
     this.showService.setShowId(showId);
-    this.router.navigate(['/venueShow/'+this.venueId+'/checkTicket']);
+    this.router.navigate(['/venueShow/' + this.venueId + '/checkTicket']);
   }
 
 

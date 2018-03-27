@@ -58,7 +58,8 @@ export class VenuePublishShowComponent implements OnInit {
     this.show.earning = 0;
     const showJson = JSON.stringify(this.show);
     console.log(showJson);
-    this.publishShowService.publishShow(showJson, this.firstSeatCost, this.secondSeatCost, this.thirdSeatCost).then(result => this.checkPublishResult(result));
+    this.publishShowService.publishShow(showJson, this.firstSeatCost, this.secondSeatCost, this.thirdSeatCost)
+      .then(result => this.checkPublishResult(result));
   }
 
   checkPublishResult(result: ResultMessage) {

@@ -24,6 +24,8 @@ export class VenueCheckTicketComponent implements OnInit {
 
   ngOnInit(): void {
     this.showId = this.showService.getShowId();
+    this.getShow();
+    this.getOrderList();
   }
 
   getShow() {

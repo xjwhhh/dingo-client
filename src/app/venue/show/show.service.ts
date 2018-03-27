@@ -11,14 +11,15 @@ import {Order} from '../../entity/order';
 @Injectable()
 export class VenueShowService {
 
-  venueId: number;
-  showId: number;
+  venueId = 1;
+  showId = 2;
 
   headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   options = new RequestOptions({headers: this.headers});
 
   private getShowListUrl = 'http://localhost:8080/show';
   private getShowByTypeUrl = 'http://localhost:8080/show/getShowByType';
+  private getShowByVenueIdUrl = 'http://localhost:8080/show/getShowByVenueId';
   private getShowByIdUrl = 'http://localhost:8080/show/getShowById';
   private publishShowUrl = 'http://localhost:8080/venue/publishShow';
   private getShowOrderUrl = 'http://localhost:8080/order/getOrderByShowId';
@@ -63,6 +64,16 @@ export class VenueShowService {
     const data = new URLSearchParams();
     data.append('showType', showType + '');
     return this.http.post(this.getShowByTypeUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as Show[])
+      .catch(this.handleError);
+  }
+
+  getShowByVenueId(venueId: number): Promise<Show[]> {
+    const data = new URLSearchParams();
+    data.append('venueId', venueId + '');
+    console.log(venueId);
+    return this.http.post(this.getShowByVenueIdUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Show[])
       .catch(this.handleError);

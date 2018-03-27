@@ -19,6 +19,7 @@ import {TicketManagerExamineModule} from './ticketmanager/examine/examine.module
 import {TicketManagerStatisticsModule} from './ticketmanager/statisticsinfo/statisticsInfo.module';
 import {VenuePublishShowModule} from './venue/publishshow/publishShow.module';
 import {PayOrderModule} from './user/pay/payOrder.module';
+import {VenueShowModule} from './venue/show/show.module';
 
 
 
@@ -35,6 +36,7 @@ import {PayOrderModule} from './user/pay/payOrder.module';
     PayOrderModule,
     VenueIdentifyModule,
     VenuePublishShowModule,
+    VenueShowModule,
     TicketManagerIdentifyModule,
     TicketManagerExamineModule,
     TicketManagerSettleModule,

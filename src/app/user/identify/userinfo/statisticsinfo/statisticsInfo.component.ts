@@ -15,6 +15,10 @@ export class UserStatisticsInfoComponent implements OnInit {
   userId: number;
   user: User = new User();
 
+  orderNumber = 0;
+  cancelNumber = 0;
+  cost = 0;
+
   orderRecordList: OrderRecord[] = [];
 
   constructor(private identifyService: IdentifyService, private route: ActivatedRoute, private router: Router) {
@@ -26,6 +30,19 @@ export class UserStatisticsInfoComponent implements OnInit {
   }
 
   getUserOrderList() {
-    this.identifyService.getUserOrderRecord(this.userId).then(orderRecordList => this.orderRecordList = orderRecordList);
+    this.identifyService.getUserOrderRecord(this.userId).then(orderRecordList => this.setOrderRecordList(orderRecordList));
+  }
+
+  setOrderRecordList(orderRecordList: OrderRecord[]) {
+    this.orderRecordList = orderRecordList;
+    for (let i = 0; i < this.orderRecordList.length; i++) {
+      if (this.orderRecordList[i].orderAction === 'ORDER') {
+        this.orderNumber++;
+        this.cost += this.orderRecordList[i].cost;
+      } else if (this.orderRecordList[i].orderAction === 'CANCEL') {
+        this.cancelNumber++;
+        this.cost -= this.orderRecordList[i].cost;
+      }
+    }
   }
 }
