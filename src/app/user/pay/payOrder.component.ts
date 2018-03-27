@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Order} from '../../entity/order';
 import {PayOrderService} from './payOrder.service';
@@ -10,7 +10,7 @@ import {ResultMessage} from '../../entity/resultmessage';
   templateUrl: './payOrder.component.html',
   styleUrls: ['./payOrder.component.css'],
 })
-export class PayOrderComponent implements OnInit {
+export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   userId: number;
   orderId: number;
@@ -27,6 +27,21 @@ export class PayOrderComponent implements OnInit {
   secondExist = false;
   thirdExist = false;
 
+  endDate: number;
+
+  // 定时器
+  private timer;
+
+  // 小时差
+  hour: number;
+  // 分钟差
+  minute: number;
+  // 秒数差
+  second: number;
+  // 时间差
+  _diff: number;
+
+
   constructor(private payOrderService: PayOrderService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -39,6 +54,7 @@ export class PayOrderComponent implements OnInit {
     });
     this.getUser();
     this.getOrder();
+    this.endDate = 900;
   }
 
   getUser() {
@@ -91,6 +107,33 @@ export class PayOrderComponent implements OnInit {
       // this.router.navigate(['../pay', orderId]);
     } else {
       alert('付款失败，请稍后重试');
+    }
+  }
+
+
+  private get diff() {
+    return this._diff;
+  }
+
+  private set diff(val) {
+    this._diff = Math.floor(val / 1000);
+    this.hour = Math.floor(this._diff / 3600);
+    this.minute = Math.floor((this._diff % 3600) / 60);
+    this.second = (this._diff % 3600) % 60;
+  }
+
+
+  // 每一秒更新时间差
+  ngAfterViewInit() {
+    this.timer = setInterval(() => {
+      this.diff = --this.endDate;
+    }, 1000);
+  }
+
+  // 销毁组件时清除定时器
+  ngOnDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
     }
   }
 

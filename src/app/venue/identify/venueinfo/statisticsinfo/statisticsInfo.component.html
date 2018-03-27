@@ -32,4 +32,27 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <p><label>线上:</label>{{}}</p>
+  </div>
+
+  <div class="row">
+    <p><label>线下:</label>{{}}</p>
+  </div>
+
+
+
+  <div *ngFor="let venueFinance of venueFinanceList">
+    <div class="venueFinance">
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>线上:</label>{{venueFinance.online}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>金额:</label>{{venueFinance.cost}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -22,6 +22,9 @@ export class VenueStatisticsInfoComponent implements OnInit {
   orderRecordList: OrderRecord[] = [];
   venueFinanceList: VenueFinance[] = [];
 
+  onlineNumber = 0;
+  offlineNumber = 0;
+
   constructor(private identifyService: VenueIdentifyService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -49,6 +52,17 @@ export class VenueStatisticsInfoComponent implements OnInit {
   }
 
   getVenueFinanceList() {
-    this.identifyService.getVenueFinance(this.venueId).then(venueFinanceList => this.venueFinanceList = venueFinanceList);
+    this.identifyService.getVenueFinance(this.venueId).then(venueFinanceList => this.setVenueFinance(venueFinanceList));
+  }
+
+  setVenueFinance(venueFinanceList: VenueFinance[]) {
+    this.venueFinanceList = venueFinanceList;
+    for (let i = 0; i < this.venueFinanceList.length; i++) {
+      if (this.venueFinanceList[i].online === true) {
+        this.onlineNumber++;
+      } else {
+        this.offlineNumber++;
+      }
+    }
   }
 }
