@@ -41,6 +41,8 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
   // 时间差
   _diff: number;
 
+  couponType: number;
+
 
   constructor(private payOrderService: PayOrderService,
               private route: ActivatedRoute,
@@ -96,7 +98,7 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.user.balance < this.order.cost) {
       alert('对不起，账户余额不足');
     } else {
-      this.payOrderService.payOrder(this.orderId).then(result => this.checkPayResult(result));
+      this.payOrderService.payOrder(this.orderId, this.couponType).then(result => this.checkPayResult(result));
     }
   }
 

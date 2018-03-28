@@ -4,7 +4,6 @@ import {Show} from '../../entity/show';
 import {PublishShowService} from './publishShow.service';
 import {ResultMessage} from '../../entity/resultmessage';
 import {Venue} from '../../entity/venue';
-import {VenueIdentifyComponent} from '../identify/identify.component';
 import {VenueIdentifyService} from '../identify/identify.service';
 
 @Component({

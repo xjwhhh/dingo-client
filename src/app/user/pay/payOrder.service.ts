@@ -67,9 +67,10 @@ export class PayOrderService {
       .catch(this.handleError);
   }
 
-  payOrder(orderId: number): Promise<ResultMessage> {
+  payOrder(orderId: number, couponType: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
     data.append('orderId', orderId + '');
+    data.append('couponType', couponType+'');
     return this.http.post(this.payOrderUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)

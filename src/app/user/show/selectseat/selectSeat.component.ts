@@ -77,16 +77,15 @@ export class ShowSelectSeatComponent implements OnInit {
     }
     if (isSaved === false) {
       if (this.seatList.length >= 6) {
-        console.log('选座购票最多只可选择6张');
+        alert('选座购票最多只可选择6张,请取消选择');
+      }
+      this.seatList.push(seat);
+      if (seat.level === '一等座') {
+        this.selectFirst++;
+      } else if (seat.level === '二等座') {
+        this.selectSecond++;
       } else {
-        this.seatList.push(seat);
-        if (seat.level === '一等座') {
-          this.selectFirst++;
-        } else if (seat.level === '二等座') {
-          this.selectSecond++;
-        } else {
-          this.selectThird++;
-        }
+        this.selectThird++;
       }
     }
     console.log(this.seatList);
@@ -114,7 +113,7 @@ export class ShowSelectSeatComponent implements OnInit {
     console.log(orderId);
     if (orderId !== -1) {
       alert('订票成功');
-      // this.router.navigate(['../pay', orderId]);
+      this.router.navigate(['/pay' + '/' + this.userId + '/' + orderId]);
     } else {
       alert('订票失败，请刷新重试');
     }
