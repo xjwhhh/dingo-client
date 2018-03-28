@@ -86,10 +86,9 @@ export class VenueIdentifyService {
       .catch(this.handleError);
   }
 
-  getVenueOrder(venueId: number, orderState: OrderState): Promise<Order[]> {
+  getVenueOrder(venueId: number): Promise<Order[]> {
     const data = new URLSearchParams();
     data.append('venueId', venueId + '');
-    data.append('orderState', orderState + '');
     return this.http.post(this.getVenueOrderUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as Order[])

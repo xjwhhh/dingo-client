@@ -3,44 +3,46 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <label>待支付</label>
+      <label (click)="setShowOrderList('UNPAID')">待支付</label>
     </div>
     <div class="col-md-2">
-      <label>待开票</label>
+      <label (click)="setShowOrderList('UNTICKETCONFIRMED')">待开票</label>
     </div>
     <div class="col-md-2">
-      <label>待开场</label>
+      <label (click)="setShowOrderList('UNSTART')">待开场</label>
     </div>
     <div class="col-md-2">
-      <label>已结束</label>
+      <label (click)="setShowOrderList('END')">已结束</label>
     </div>
     <div class="col-md-2">
-      <label>退订</label>
+      <label (click)="setShowOrderList('CANCELLED')">退订</label>
     </div>
   </div>
 
   <div class="row">
-    <div *ngFor="let order of orderList">
-
+    <div *ngFor="let order of showOrderList">
       <div class="row">
-        <div *ngFor="let order of orderList">
+        <div class="col-md-3">
+          <p><label>订单ID:</label>{{order.id}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>订购者ID:</label>{{order.userId}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>演出ID:</label>{{order.showId}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>时间:</label>{{order.orderTime}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngFor="let ticket of order.ticketList">
           <div class="row">
             <div class="col-md-3">
-              <label>订单ID</label>
+              <p><label>等级:</label>{{ticket.level}}</p>
             </div>
             <div class="col-md-3">
-              <label>订购者</label>
-            </div>
-            <div class="col-md-3">
-              <label>演出</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <label>价格</label>
-            </div>
-            <div class="col-md-3">
-              <label>时间</label>
+              <p><label>价格:</label>{{ticket.cost}}</p>
             </div>
           </div>
         </div>
