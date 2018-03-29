@@ -6,7 +6,7 @@ import {ShowService} from '../show.service';
 @Component({
   selector: 'app-show-display',
   templateUrl: './displayShow.component.html',
-  // styleUrls: ['./show.component.css'],
+  styleUrls: ['./displayShow.component.css'],
 })
 export class DisPlayShowComponent implements OnInit {
 
@@ -20,17 +20,8 @@ export class DisPlayShowComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.route.params.subscribe((params: Params) => {
-    //   this.userId = params['userId'];
-    //   this.showType = params['type'];
-    // });
-    // this.showType = this.route.snapshot.params['type'];
-    // console.log(this.userId);
-    // console.log(this.showType);
-    // this.showService.setUserId(this.userId);
     this.userId = this.showService.getUserId();
     this.showType = this.showService.getShowType();
-    console.log('234567');
     this.getShowList();
   }
 

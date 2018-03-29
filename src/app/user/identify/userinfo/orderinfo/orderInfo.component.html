@@ -13,7 +13,7 @@
     <div class="col-md-2" style="text-align: center">
       <label (click)="setOrderList('END')">已结束</label>
     </div>
-    <div class="col-md-2"style="text-align: center">
+    <div class="col-md-2" style="text-align: center">
       <label (click)="setOrderList('CANCELLED')">退订</label>
     </div>
   </div>
@@ -44,7 +44,9 @@
           <button *ngIf="unPaid" type="button" class="btn btn-default" (click)="gotoPay(order.id)">支付</button>
         </div>
         <div class="row">
-          <button *ngIf="unPaid||unTicketConfirmed||unStart" type="button" class="btn btn-default" (click)="cancel(order.id)">取消</button>
+          <button *ngIf="unPaid||unTicketConfirmed||unStart" type="button" class="btn btn-default"
+                  (click)="cancel(order.id)">取消
+          </button>
         </div>
       </div>
     </div>

@@ -1,0 +1,11 @@
+.application {
+  border-style: solid;
+  padding: 10px;
+  margin: 10px;
+}
+
+.seat {
+  border-style: dotted;
+  padding: 10px;
+  margin: 10px;
+}

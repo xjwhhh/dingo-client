@@ -1,47 +1,52 @@
 <div class="container">
   <div *ngFor="let application of venueApplicationList;let i=index">
-    <div class="row">
-      <label>申请ID:{{application.id}}</label>
-      <label>{{i}}</label>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <label>账号:{{venueList[i].account}}</label>
-      </div>
-      <div class="col-md-3">
-        <label>编码:{{venueList[i].code}}</label>
-      </div>
+    <div class="application">
       <div class="row">
-        <div class="col-md-3">
-          <label>名字:{{venueList[i].name}}</label>
-        </div>
-        <div class="col-md-3">
-          <label>地址:{{venueList[i].address}}</label>
+        <div class="col-md-12">
+          <label>申请ID:{{application.id}}</label>
         </div>
       </div>
       <div class="row">
+        <div class="col-md-3">
+          <label>账号:{{venueList[i].account}}</label>
+        </div>
+        <div class="col-md-3">
+          <label>编码:{{venueList[i].code}}</label>
+        </div>
         <div class="row">
-          <div class="col-md-6">
-            <label>座位ID</label>
+          <div class="col-md-3">
+            <label>名字:{{venueList[i].name}}</label>
           </div>
-          <div class="col-md-6">
-            <label>座位描述</label>
+          <div class="col-md-3">
+            <label>地址:{{venueList[i].address}}</label>
           </div>
         </div>
-        <div *ngFor="let seat of venueList[i].seatList">
+        <div class="seat">
           <div class="row">
             <div class="col-md-6">
-              <label>{{seat.id}}</label>
+              <label>座位ID</label>
             </div>
             <div class="col-md-6">
-              <label>{{seat.description}}</label>
+              <label>座位描述</label>
+            </div>
+          </div>
+          <div *ngFor="let seat of venueList[i].seatList">
+            <div class="row">
+              <div class="col-md-6">
+                <label>{{seat.id}}</label>
+              </div>
+              <div class="col-md-6">
+                <label>{{seat.description}}</label>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <button type="button" (click)="approve(application.id)">同意更新申请</button>
+      <div class="row">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-default" (click)="approve(application.id)">同意更新申请</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -41,21 +41,25 @@
 
 <div class="container">
   <div class="row">
-    <input type="text" #text>
-  </div>
-  <div class="row">
-    <button type="button" (click)="searchUser(text.value)">搜索</button>
+    <div class="col-md-3">
+      <input type="text" #text>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-default" (click)="searchUser(text.value)">搜索</button>
+    </div>
   </div>
   <div *ngFor="let user of showUserList">
-    <div class="row">
-      <div class="col-md-3">
-        <p><label>ID:</label>{{user.id}}</p>
-      </div>
-      <div class="col-md-3">
-        <p><label>昵称:</label>{{user.name}}</p>
-      </div>
-      <div class="col-md-3">
-        <p><label>会员等级:</label>{{user.level}}</p>
+    <div class="user">
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>ID:</label>{{user.id}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>昵称:</label>{{user.name}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>会员等级:</label>{{user.level}}</p>
+        </div>
       </div>
     </div>
   </div>

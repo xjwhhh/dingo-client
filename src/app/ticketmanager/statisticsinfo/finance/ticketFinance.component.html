@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <input type="text" #text>
-  </div>
-  <div class="row">
-    <button type="button" (click)="searchTicketFinance(text.value)">搜索</button>
+    <div class="col-md-3">
+      <input type="text" #text>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-default" (click)="searchTicketFinance(text.value)">搜索</button>
+    </div>
   </div>
   <div *ngFor="let ticketFinance of showTicketFinanceList">
     <div class="row">

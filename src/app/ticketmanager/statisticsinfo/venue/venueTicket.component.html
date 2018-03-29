@@ -1,23 +1,29 @@
 <div class="container">
   <div class="row">
-    <input type="text" #text>
+    <div class="col-md-3">
+      <input type="text" #text>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-default" (click)="searchVenue(text.value)">搜索</button>
+
+    </div>
   </div>
-  <div class="row">
-    <button type="button" (click)="searchVenue(text.value)">搜索</button>
-  </div>
+
   <div *ngFor="let venue of showVenueList">
-    <div class="row">
-      <div class="col-md-3">
-        <p><label>ID:</label>{{venue.id}}</p>
-      </div>
-      <div class="col-md-3">
-        <p><label>编号:</label>{{venue.code}}</p>
-      </div>
-      <div class="col-md-3">
-        <p><label>名字:</label>{{venue.name}}</p>
-      </div>
-      <div class="col-md-3">
-        <p><label>地址:</label>{{venue.address}}</p>
+    <div class="venue">
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>ID:</label>{{venue.id}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>编号:</label>{{venue.code}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>名字:</label>{{venue.name}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>地址:</label>{{venue.address}}</p>
+        </div>
       </div>
     </div>
   </div>

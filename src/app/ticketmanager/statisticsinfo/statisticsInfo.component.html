@@ -1,19 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" routerLink="../ticketManagerExamine" routerLinkActive="active">审批</div>
-    <div class="col-md-3" routerLink="../ticketManagerSettle" routerLinkActive="active">结算</div>
-    <div class="col-md-3" routerLink="../ticketManagerStatisticsInfo" routerLinkActive="active">统计</div>
-    <div class="col-md-3" routerLink="../ticketManagerIdentify" routerLinkActice="active">个人</div>
+    <div class="col-md-3" routerLink="../ticketManagerExamine" routerLinkActive="active">
+      <label style="font-size: 20px">审批</label>
+    </div>
+    <div class="col-md-3" routerLink="../ticketManagerSettle" routerLinkActive="active">
+      <label style="font-size: 20px">结算</label>
+    </div>
+    <div class="col-md-3" routerLink="../ticketManagerStatisticsInfo" routerLinkActive="active">
+      <label style="font-size: 20px">统计</label>
+    </div>
+    <div class="col-md-3" routerLink="../ticketManagerIdentify" routerLinkActive="active">
+      <label style="font-size: 20px">个人</label>
+    </div>
   </div>
+  <div class="row" style="height: 20px;"></div>
 </div>
 
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4" routerLink="venueTicket" routerLinkActive="active">场馆统计</div>
-    <div class="col-md-4" routerLink="userTicket" routerLinkActive="active">会员统计</div>
-    <div class="col-md-4" routerLink="ticketFinance" routerLinkActive="active">财务</div>
+    <div class="col-md-4" routerLink="venueTicket" routerLinkActive="active">
+      <label> 场馆统计</label>
+    </div>
+    <div class="col-md-4" routerLink="userTicket" routerLinkActive="active">
+      <label>会员统计</label>
+    </div>
+    <div class="col-md-4" routerLink="ticketFinance" routerLinkActive="active">
+      <label>财务</label>
+    </div>
   </div>
+  <div class="row" style="height: 20px;"></div>
 </div>
 
 <router-outlet></router-outlet>
