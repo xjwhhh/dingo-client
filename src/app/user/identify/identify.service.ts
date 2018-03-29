@@ -23,7 +23,7 @@ export class IdentifyService {
   private emailConfirmationUrl = 'http://localhost:8080/user/emailConfirmation';
   private cancelOrderUrl = 'http://localhost:8080/order/cancel';
   private cancelUserUrl = 'http://localhost:8080/user/cancel';
-  private exchangeCouponUrl = '';
+  private exchangeCouponUrl = 'http://localhost:8080/user/exchangeCoupon';
 
 
   constructor(private http: Http, private router: Router) {

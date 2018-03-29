@@ -1,7 +1,8 @@
 <div class="container">
+  <div class="row" style="height: 20px;"></div>
   <div class="row">
     <div class="col-md-2">
-      <label>编号</label>
+      <label>编号:</label>
     </div>
     <div class="col-md-10">
       <label>{{venue.code}}</label>
@@ -10,7 +11,7 @@
   <div class="row" style="height: 10px;"></div>
   <div class="row">
     <div class="col-md-2">
-      <label>名称</label>
+      <label>名称:</label>
     </div>
     <div class="col-md-10">
       <label>{{venue.name}}</label>
@@ -19,7 +20,7 @@
   <div class="row" style="height: 10px;"></div>
   <div class="row">
     <div class="col-md-2">
-      <label>地址</label>
+      <label>地址:</label>
     </div>
     <div class="col-md-10">
       <label>{{venue.address}}</label>
@@ -28,23 +29,34 @@
   <div class="row" style="height: 10px;"></div>
   <div class="row">
     <div class="col-md-2">
-      <label>余额</label>
+      <label>线上收益:</label>
     </div>
     <div class="col-md-10">
-      <label>{{venue.balance}}</label>
+      <label>{{venue.onlineBalance}}</label>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
   <div class="row">
     <div class="col-md-2">
-      <label>座位数</label>
+      <label>线下收益:</label>
+    </div>
+    <div class="col-md-10">
+      <label>{{venue.offlineBalance}}</label>
+    </div>
+  </div>
+  <div class="row" style="height: 10px;"></div>
+  <div class="row">
+    <div class="col-md-2">
+      <label>座位数:</label>
     </div>
     <div class="col-md-10">
       <label *ngIf="venue.seatList">{{venue.seatList.length}}</label>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
-  <div class="col-md-offset-2 col-md-10">
-    <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
+    </div>
   </div>
 </div>

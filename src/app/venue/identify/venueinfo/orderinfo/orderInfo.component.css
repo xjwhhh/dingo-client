@@ -1,0 +1,11 @@
+.order{
+  border-style: solid;
+  padding: 10px;
+  margin: 10px;
+}
+
+.ticket{
+  border-style: dotted;
+  padding: 5px;
+  margin: 5px;
+}

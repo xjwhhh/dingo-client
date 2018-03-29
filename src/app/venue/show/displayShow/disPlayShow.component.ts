@@ -6,7 +6,7 @@ import {VenueShowService} from '../show.service';
 @Component({
   selector: 'app-show-display',
   templateUrl: './displayShow.component.html',
-  // styleUrls: ['./show.component.css'],
+  styleUrls: ['./displayShow.component.css'],
 })
 export class VenueDisPlayShowComponent implements OnInit {
 
@@ -14,6 +14,7 @@ export class VenueDisPlayShowComponent implements OnInit {
   venueId: number;
   progressType: string;
   showList: Show[] = [];
+  showShowList: Show[] = [];
 
   constructor(private showService: VenueShowService,
               private route: ActivatedRoute,
@@ -26,34 +27,21 @@ export class VenueDisPlayShowComponent implements OnInit {
       this.venueId = params['venueId'];
     });
     this.showService.setvenueId(this.venueId);
+    this.getShowList();
   }
 
-  getShowList(progressType: string) {
-    // switch (showTypeString) {
-    //   case 'PRESALE' :
-    //     this.showType = ProgressType.PRESALE;
-    //     break;
-    //   case 'START' :
-    //     this.showType = ProgressType.START;
-    //     break;
-    //   case 'END' :
-    //     this.showType = ProgressType.END;
-    //     break;
-    // }
+  getShowList() {
+    this.showService.getShowByVenueId(this.venueId).then(showList => this.showList = showList);
+  }
+
+  setShowList(progressType: string) {
     this.progressType = progressType;
-    // console.log(this.progressType);
-    this.showService.getShowByVenueId(this.venueId).then(showList => this.setShowList(showList));
-  }
-
-  setShowList(showList: Show[]) {
-    this.showList.splice(0, this.showList.length);
-    for (let i = 0; i < showList.length; i++) {
-      // console.log(showList[i].progressType);
-      // console.log(this.progressType);
-      // console.log(showList[i].progressType === this.progressType);
-      if (showList[i].progressType === this.progressType) {
-        // console.log('23');
-        this.showList.push(showList[i]);
+    this.showShowList.splice(0, this.showShowList.length);
+    for (let i = 0; i < this.showList.length; i++) {
+      if (this.showList[i].progressType === this.progressType) {
+        const show = this.showList[i];
+        show.startTime = show.startTime.split(' ')[0];
+        this.showShowList.push(show);
       }
     }
   }

@@ -1,6 +1,7 @@
 <!--根据演出状态选-->
 
 <div class="container">
+  <div class="row" style="height: 20px;"></div>
   <div class="row">
     <div class="col-md-2">
       <label (click)="setShowOrderList('UNPAID')">待支付</label>
@@ -21,28 +22,35 @@
 
   <div class="row">
     <div *ngFor="let order of showOrderList">
-      <div class="row">
-        <div class="col-md-3">
-          <p><label>订单ID:</label>{{order.id}}</p>
+      <div class="order">
+        <div class="row">
+          <div class="col-md-3">
+            <p><label>订单ID:</label>{{order.id}}</p>
+          </div>
+          <div class="col-md-3">
+            <p><label>订购者ID:</label>{{order.userId}}</p>
+          </div>
+          <div class="col-md-3">
+            <p><label>演出ID:</label>{{order.showId}}</p>
+          </div>
+          <div class="col-md-3">
+            <p><label>时间:</label>{{order.orderTime}}</p>
+          </div>
         </div>
-        <div class="col-md-3">
-          <p><label>订购者ID:</label>{{order.userId}}</p>
-        </div>
-        <div class="col-md-3">
-          <p><label>演出ID:</label>{{order.showId}}</p>
-        </div>
-        <div class="col-md-3">
-          <p><label>时间:</label>{{order.orderTime}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div *ngFor="let ticket of order.ticketList">
-          <div class="row">
-            <div class="col-md-3">
-              <p><label>等级:</label>{{ticket.level}}</p>
-            </div>
-            <div class="col-md-3">
-              <p><label>价格:</label>{{ticket.cost}}</p>
+        <div class="row">
+          <div *ngFor="let ticket of order.ticketList">
+            <div class="ticket">
+              <div class="row">
+                <div class="col-md-3">
+                  <p><label>取票ID:</label>{{ticket.id}}</p>
+                </div>
+                <div class="col-md-3">
+                  <p><label>等级:</label>{{ticket.level}}</p>
+                </div>
+                <div class="col-md-3">
+                  <p><label>价格:</label>{{ticket.cost}}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

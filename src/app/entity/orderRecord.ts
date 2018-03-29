@@ -7,4 +7,5 @@ export class OrderRecord {
   cost: number;
   orderAction: string;
   time: string;
+  online: boolean;
 }

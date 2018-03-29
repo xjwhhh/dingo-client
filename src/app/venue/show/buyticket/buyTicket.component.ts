@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {VenueShowService} from '../show.service';
 import {Show} from '../../../entity/show';
-import {Order} from '../../../entity/order';
-import {ResultMessage} from '../../../entity/resultmessage';
-import {ShowSeat} from '../../../entity/showseat';
 
 @Component({
   selector: 'app-venue-show-buy-ticket',
@@ -19,7 +16,6 @@ export class VenueBuyTicketComponent implements OnInit {
   userAccount: number;
   userPassword: number;
 
-  orderList: Order[] = [];
 
   constructor(private showService: VenueShowService,
               private route: ActivatedRoute,
@@ -45,29 +41,14 @@ export class VenueBuyTicketComponent implements OnInit {
     }
   }
 
-  checkTicketNumber(seat: ShowSeat) {
-    console.log(seat);
-  }
-
-
   checkReserveResult(orderId: number) {
     console.log(orderId);
     if (orderId === -1) {
       alert('账号密码错误');
-      // this.router.navigate(['../pay', orderId]);
     } else if (orderId === -2) {
       alert('账户余额不足');
     } else {
       alert('现场订票成功');
-    }
-  }
-
-
-  checkTicektCheckResult(result: ResultMessage) {
-    if (result.toString() === 'SUCCESS') {
-      alert('检票登记成功');
-    } else {
-      alert('检票登记失败');
     }
   }
 

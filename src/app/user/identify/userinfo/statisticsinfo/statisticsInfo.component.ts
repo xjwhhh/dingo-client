@@ -43,6 +43,7 @@ export class UserStatisticsInfoComponent implements OnInit {
         this.cancelNumber++;
         this.cost -= this.orderRecordList[i].cost;
       }
+      console.log(this.cost);
     }
   }
 }

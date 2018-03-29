@@ -1,48 +1,51 @@
 <div class="container">
+  <div class="row" style="height: 20px"></div>
   <div class="row">
-    <div class="col-md-2">
-      <label (click)="getUserOrder('UNPAID')">待支付</label>
+    <div class="col-md-2" style="text-align: center">
+      <label (click)="setOrderList('UNPAID')">待支付</label>
     </div>
-    <div class="col-md-2">
-      <label (click)="getUserOrder('UNTICKETCONFIRMED')">待开票</label>
+    <div class="col-md-2" style="text-align: center">
+      <label (click)="setOrderList('UNTICKETCONFIRMED')">待开票</label>
     </div>
-    <div class="col-md-2">
-      <label (click)="getUserOrder('UNSTART')">待开场</label>
+    <div class="col-md-2" style="text-align: center">
+      <label (click)="setOrderList('UNSTART')">待开场</label>
     </div>
-    <div class="col-md-2">
-      <label (click)="getUserOrder('END')">已结束</label>
+    <div class="col-md-2" style="text-align: center">
+      <label (click)="setOrderList('END')">已结束</label>
     </div>
-    <div class="col-md-2">
-      <label (click)="getUserOrder('CANCELLED')">退订</label>
+    <div class="col-md-2"style="text-align: center">
+      <label (click)="setOrderList('CANCELLED')">退订</label>
     </div>
   </div>
 
   <div class="row">
-    <div *ngFor="let order of orderList" (click)="gotoOrderDetail(order.id)">
-      <div class="row">
-        <div class="col-md-3">
-          <label>订单ID:{{order.id}}</label>
+    <div *ngFor="let order of showOrderList" (click)="gotoOrderDetail(order.id)">
+      <div class="order">
+        <div class="row">
+          <div class="col-md-3">
+            <label>订单ID:{{order.id}}</label>
+          </div>
+          <div class="col-md-3">
+            <label>场馆:{{order.venueId}}</label>
+          </div>
+          <div class="col-md-3">
+            <label>演出:{{order.showId}}</label>
+          </div>
         </div>
-        <div class="col-md-3">
-          <label>场馆:{{order.venueId}}</label>
+        <div class="row">
+          <div class="col-md-3">
+            <label>价格:{{order.cost}}</label>
+          </div>
+          <div class="col-md-3">
+            <label>时间:{{order.orderTime}}</label>
+          </div>
         </div>
-        <div class="col-md-3">
-          <label>演出:{{order.showId}}</label>
+        <div class="row">
+          <button *ngIf="unPaid" type="button" class="btn btn-default" (click)="gotoPay(order.id)">支付</button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <label>价格:{{order.cost}}</label>
+        <div class="row">
+          <button *ngIf="unPaid||unTicketConfirmed||unStart" type="button" class="btn btn-default" (click)="cancel(order.id)">取消</button>
         </div>
-        <div class="col-md-3">
-          <label>时间:{{order.orderTime}}</label>
-        </div>
-      </div>
-      <div class="row">
-        <button *ngIf="unPaid" type="button" (click)="gotoPay(order.id)">支付</button>
-      </div>
-      <div class="row">
-        <button *ngIf="unPaid||unTicketConfirmed||unStart" type="button" (click)="cancel(order.id)">取消</button>
       </div>
     </div>
   </div>

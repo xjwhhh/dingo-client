@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <img src="assets/image/shiki.jpg" width="100%" height="100%">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" style="text-align: center;">
       <div class="row">
         <label>{{show.name}}</label>
       </div>
@@ -29,32 +29,32 @@
         <p>剩余座位数:{{show.currentSeats}}</p>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
           <label>一等座:</label>
         </div>
-        <div class="col-md-">
+        <div class="col-md-10">
           <input type="text" #firstNumber>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
           <label>二等座:</label>
         </div>
-        <div class="col-md-">
+        <div class="col-md-10">
           <input type="text" #secondNumber>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
           <label>三等座:</label>
         </div>
-        <div class="col-md-">
+        <div class="col-md-10">
           <input type="text" #thirdNumber>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6" align="center">
-          <button type="button" (click)="buyTickets(firstNumber.value,secondNumber.value,thirdNumber.value)">确认购买
+          <button type="button" class="btn btn-default" (click)="buyTickets(firstNumber.value,secondNumber.value,thirdNumber.value)">确认购买
           </button>
         </div>
       </div>

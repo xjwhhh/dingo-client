@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OrderRecord} from '../../../../entity/orderRecord';
-import {User} from '../../../../entity/user';
 import {VenueIdentifyService} from '../../identify.service';
 import {VenueFinance} from '../../../../entity/veneuFinance';
 
@@ -44,6 +43,11 @@ export class VenueStatisticsInfoComponent implements OnInit {
       if (this.orderRecordList[i].orderAction === 'ORDER') {
         this.orderNumber++;
         this.cost += this.orderRecordList[i].cost;
+        if (this.orderRecordList[i].online) {
+          this.onlineNumber++;
+        } else {
+          this.offlineNumber++;
+        }
       } else if (this.orderRecordList[i].orderAction === 'CANCEL') {
         this.cancelNumber++;
         this.cost -= this.orderRecordList[i].cost;

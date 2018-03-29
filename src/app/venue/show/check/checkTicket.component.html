@@ -1,19 +1,32 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="text-align: center">
     <p><label>演出ID:</label>{{show.id}}</p>
   </div>
-  <div class="row">
+  <div class="row" style="text-align: center">
     <p><label>演出名称:</label>{{show.name}}</p>
   </div>
-  <div class="row">
+  <div class="row" style="text-align: center">
     <p><label>演出时间:</label>{{show.startTime}}</p>
   </div>
   <div *ngFor="let order of orderList">
     <div class="order">
       <p><label>订单ID:</label>{{order.id}}</p>
       <div *ngFor="let ticket of order.ticketList">
-        <label>{{ticket.id}}</label>
-        <button type="button" (click)="doCheck(ticket.id)">检票登记</button>
+        <div class="ticket">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="col-md-6">
+                <label>取票ID:</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ticket.id}}</p>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-default" (click)="doCheck(ticket.id)">检票登记</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

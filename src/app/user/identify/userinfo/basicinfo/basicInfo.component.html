@@ -1,10 +1,11 @@
 <div class="container">
+  <div class="row" style="height: 20px"></div>
   <div class="row">
     <div class="col-md-2">
       <label>账号</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.id}}</label>
+      <p>{{user.id}}</p>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -13,7 +14,7 @@
       <label>昵称</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.name}}</label>
+      <p>{{user.name}}</p>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -22,7 +23,7 @@
       <label>会员级别</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.level}}</label>
+      <p>{{user.level}}</p>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -31,7 +32,7 @@
       <label>当前积分</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.currentIntegral}}</label>
+      <p>{{user.currentIntegral}}</p>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
@@ -40,17 +41,21 @@
       <label>总积分</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.totalIntegral}}</label>
+      <p>{{user.totalIntegral}}</p>
     </div>
   </div>
   <div class="row">
-    <p><label>100积分卷(满100减10):</label>{{firstCouponNumber}}张</p>
+    <div class="col-md-2"><label>100积分卷(满100减10):</label> </div>
+    <div class="col-md-9"><p>{{firstCouponNumber}}张</p></div>
+
   </div>
   <div class="row">
-    <p><label>500积分卷(满1000减100):</label>{{secondCouponNumber}}张</p>
+    <div class="col-md-2"><label>500积分卷(满1000减100):</label> </div>
+    <div class="col-md-9"><p>{{secondCouponNumber}}张</p></div>
   </div>
   <div class="row">
-    <p><label>1000积分卷(满200减20):</label>{{thirdCouponNumber}}张</p>
+    <div class="col-md-2"><label>1000积分卷(满200减20):</label> </div>
+    <div class="col-md-9"><p>{{thirdCouponNumber}}张</p></div>
   </div>
   <div class="row" style="height: 10px;"></div>
   <div class="row">
@@ -58,25 +63,16 @@
       <label>绑定邮箱</label>
     </div>
     <div class="col-md-10">
-      <label>{{user.emailAddress}}</label>
-    </div>
-  </div>
-  <div class="row" style="height: 10px;"></div>
-  <div class="row">
-    <div class="col-md-2">
-      <label>是否验证</label>
-    </div>
-    <div class="col-md-10">
-      <label>{{user.confirmed}}</label>
+      <p>{{user.emailAddress}}</p>
     </div>
   </div>
   <div class="row" style="height: 10px;"></div>
   <div class="row">
     <div class="col-md-3">
-      <p>100积分，满100减10</p>
+      <label>100积分，满100减10</label>
     </div>
     <div class="col-md-3">
-      <p><input type="number" #firstCouponNumbers>张</p>
+      <p><input type="number" #firstCouponNumbers> 张</p>
     </div>
     <div class="col-md-3">
       <button type="button" (click)="exchangeCoupon(1,firstCouponNumbers.value)">兑换</button>
@@ -84,10 +80,10 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <p>500积分，满1000减100</p>
+      <label>500积分，满1000减100</label>
     </div>
     <div class="col-md-3">
-      <p><input type="number" #secondCouponNumbers>张</p>
+      <p><input type="number" #secondCouponNumbers> 张</p>
     </div>
     <div class="col-md-3">
       <button type="button" (click)="exchangeCoupon(2,secondCouponNumbers.value)">兑换</button>
@@ -95,19 +91,21 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <p>1000积分，满2000减200</p>
+      <label>1000积分，满2000减200</label>
     </div>
     <div class="col-md-3">
-      <p><input type="number" #thirdCouponNumbers>张</p>
+      <p><input type="number" #thirdCouponNumbers> 张</p>
     </div>
     <div class="col-md-3">
       <button type="button" (click)="exchangeCoupon(3,thirdCouponNumbers.value)">兑换</button>
     </div>
   </div>
-  <div class="col-md-offset-2 col-md-10">
-    <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
-  </div>
-  <div class="col-md-offset-2 col-md-10">
-    <button type="button" class="btn btn-default" (click)="cancel()">取消会员（注销）</button>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-default" (click)="gotoUpdateBasicInfo()">修改基本信息</button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-default" (click)="cancel()">取消会员（注销）</button>
+    </div>
   </div>
 </div>

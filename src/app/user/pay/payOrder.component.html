@@ -1,33 +1,5 @@
 <div class="container">
-  <div class="row">
-    <!--<div class="count-down">-->
-      <!--<div class="body">-->
-        <!--<div class="content">-->
-          <!--<div class="top">-->
-            <!--{{hour}}-->
-          <!--</div>-->
-          <!--<div class="bottom">-->
-            <!--小时-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="content">-->
-          <!--<div class="top">-->
-            <!--{{minute}}-->
-          <!--</div>-->
-          <!--<div class="bottom">-->
-            <!--分钟-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="content">-->
-          <!--<div class="top">-->
-            <!--{{second}}-->
-          <!--</div>-->
-          <!--<div class="bottom">-->
-            <!--秒-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
+  <div class="row" style="height: 20px;">
   </div>
   <div class="row">
     <label>用户名:{{user.name}}</label>
@@ -52,7 +24,7 @@
       <p><label>100积分卷(满100减10):</label>{{firstCouponNumber}}张</p>
     </div>
     <div class="col-md-3">
-      <input type="checkbox">
+      <input type="checkbox" (click)="setCouponType(1)" name="coupon">
     </div>
   </div>
   <div class="row" *ngIf="secondExist">
@@ -60,7 +32,7 @@
       <p><label>500积分卷(满1000减100):</label>{{secondCouponNumber}}张</p>
     </div>
     <div class="col-md-3">
-      <input type="checkbox">
+      <input type="checkbox" (click)="setCouponType(2)" name="coupon">
     </div>
   </div>
   <div class="row" *ngIf="thirdExist">
@@ -68,10 +40,11 @@
       <p><label>1000积分卷(满200减20):</label>{{thirdCouponNumber}}张</p>
     </div>
     <div class="col-md-3">
-      <input type="checkbox">
+      <input type="checkbox" (click)="setCouponType(3)" name="coupon">
     </div>
   </div>
   <div *ngFor="let ticket of order.ticketList">
+    <div class="ticket">
     <div class="row">
       <label>取票ID:{{ticket.id}}</label>
     </div>
@@ -84,8 +57,9 @@
     <div class="row">
       <label>座位等级:{{ticket.level}}</label>
     </div>
+    </div>
   </div>
   <div class="row">
-    <button type="button" (click)="pay()">支付</button>
+    <button type="button" class="btn btn-default" (click)="pay()">支付</button>
   </div>
 </div>

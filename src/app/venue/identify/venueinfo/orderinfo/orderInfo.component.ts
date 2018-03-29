@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {VenueIdentifyService} from '../../identify.service';
-import {OrderState} from '../../../../entity/orderstate';
 import {Order} from '../../../../entity/order';
 
 
@@ -21,33 +20,12 @@ export class VenueOrderInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.route.params.subscribe((params: Params) => {
-    //   this.venueId = params['venueId'];
-    // });
-    // this.showType = this.route.snapshot.params['type'];
     this.venueId = this.identifyService.getVenueId();
     console.log(this.venueId);
     this.getVenueOrder();
   }
 
   getVenueOrder() {
-    // switch (orderStateString) {
-    //   case 'unPaid':
-    //     this.orderState = OrderState.UNPAID;
-    //     break;
-    //   case 'unTicketConfirmed':
-    //     this.orderState = OrderState.UNTICKETCONFIRMED;
-    //     break;
-    //   case 'unStart':
-    //     this.orderState = OrderState.UNSTART;
-    //     break;
-    //   case 'end':
-    //     this.orderState = OrderState.END;
-    //     break;
-    //   case 'cancelled':
-    //     this.orderState = OrderState.CANCELLED;
-    //     break;
-    // }
     this.identifyService.getVenueOrder(this.venueId).then(orderList => this.setOrderList(orderList));
   }
 

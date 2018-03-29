@@ -14,6 +14,7 @@ import {ResultMessage} from '../../../../entity/resultmessage';
 export class UserOrderInfoComponent implements OnInit {
   userId: number;
   orderList: Order[] = [];
+  showOrderList: Order[] = [];
   orderState: string;
 
   unPaid = false;
@@ -26,32 +27,19 @@ export class UserOrderInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.route.params.subscribe((params: Params) => {
-    //   this.userId = params['userId'];
-    // });
-    // this.showType = this.route.snapshot.params['type'];
     this.userId = this.identifyService.getUserId();
     console.log(this.userId);
+    this.getUserOrder();
   }
 
-  getUserOrder(orderStateString: string) {
-    // switch (orderStateString) {
-    //   case 'unPaid':
-    //     this.orderState = OrderState.UNPAID;
-    //     break;
-    //   case 'unTicketConfirmed':
-    //     this.orderState = OrderState.UNTICKETCONFIRMED;
-    //     break;
-    //   case 'unStart':
-    //     this.orderState = OrderState.UNSTART;
-    //     break;
-    //   case 'end':
-    //     this.orderState = OrderState.END;
-    //     break;
-    //   case 'cancelled':
-    //     this.orderState = OrderState.CANCELLED;
-    //     break;
-    // }
+  getUserOrder() {
+
+    this.identifyService.getUserOrder(this.userId).then(orderList => {
+      this.orderList = orderList;
+    });
+  }
+
+  setOrderList(orderStateString: string) {
     this.reset();
     switch (orderStateString) {
       case 'UNPAID':
@@ -71,24 +59,15 @@ export class UserOrderInfoComponent implements OnInit {
         break;
     }
     this.orderState = orderStateString;
-    this.identifyService.getUserOrder(this.userId).then(orderList => {
-      // console.log(orderList);
-      this.setOrderList(orderList);
-    });
-  }
-
-  setOrderList(orderList: Order[]) {
-    // console.log(this.orderState);
-    for (let i = 0; i < orderList.length; i++) {
-      if (orderList[i].state === this.orderState) {
-        // console.log(orderList[i]);
-        this.orderList.push(orderList[i]);
+    for (let i = 0; i < this.orderList.length; i++) {
+      if (this.orderList[i].state === this.orderState) {
+        this.showOrderList.push(this.orderList[i]);
       }
     }
   }
 
   reset() {
-    this.orderList.splice(0, this.orderList.length);
+    this.showOrderList.splice(0, this.showOrderList.length);
     this.unPaid = false;
     this.unTicketConfirmed = false;
     this.unStart = false;

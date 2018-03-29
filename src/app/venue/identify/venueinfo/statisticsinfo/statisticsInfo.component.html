@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="row" style="height: 20px;"></div>
   <div class="row">
     <div class="col-md-4">
       <p><label>预订数:</label>{{orderNumber}}</p>
@@ -11,9 +12,20 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <p><label>销售:</label>{{cost}}</p>
+      <p><label>线上订单数:</label>{{onlineNumber}}</p>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p><label>线下订单数:</label>{{offlineNumber}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p><label>销售额:</label>{{cost}}</p>
+    </div>
+  </div>
+
   <div *ngFor="let orderRecord of orderRecordList">
     <div class="orderRecord">
       <div class="row">
@@ -32,16 +44,6 @@
       </div>
     </div>
   </div>
-
-  <div class="row">
-    <p><label>线上:</label>{{onlineNumber}}</p>
-  </div>
-
-  <div class="row">
-    <p><label>线下:</label>{{offlineNumber}}</p>
-  </div>
-
-
 
   <div *ngFor="let venueFinance of venueFinanceList">
     <div class="venueFinance">

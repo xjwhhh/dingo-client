@@ -41,7 +41,9 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
   // 时间差
   _diff: number;
 
-  couponType: number;
+  couponType = -1;
+
+  deadline: Date = new Date();
 
 
   constructor(private payOrderService: PayOrderService,
@@ -68,10 +70,13 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
     for (let i = 0; i < user.couponList.length; i++) {
       if (user.couponList[i].type === 1) {
         this.firstCouponNumber++;
+        // this.firstExist = true;
       } else if (user.couponList[i].type === 2) {
         this.secondCouponNumber++;
+        // this.secondExist = true;
       } else if (user.couponList[i].type === 3) {
         this.thirdCouponNumber++;
+        // this.thirdExist = true;
       }
     }
   }
@@ -92,6 +97,12 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
     } else if (this.order.cost >= 100) {
       this.firstExist = true;
     }
+    // this.deadline=this.order.orderTime
+
+  }
+
+  setCouponType(couponType: number) {
+    this.couponType = couponType;
   }
 
   pay() {

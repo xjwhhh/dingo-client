@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {VenueShowService} from '../show.service';
 import {Show} from '../../../entity/show';
 import {Order} from '../../../entity/order';
