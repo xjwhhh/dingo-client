@@ -32,6 +32,7 @@ export class VenueBuyTicketComponent implements OnInit {
   }
 
   buyTickets(firstNumber: number, secondNumber: number, thirdNumber: number) {
+    console.log(firstNumber + secondNumber + thirdNumber);
     if (firstNumber + secondNumber + thirdNumber > 20) {
       alert('立即购票每单最多只可选择20张');
     } else {

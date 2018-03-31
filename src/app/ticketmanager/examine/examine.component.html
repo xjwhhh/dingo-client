@@ -18,11 +18,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <label routerLink="register" routerLinkActive="active">场馆注册</label>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <label routerLink="update" routerLinkActive="active">信息修改</label>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-default" (click)="allocateTicket()">配票</button>
     </div>
   </div>
   <div class="row" style="height: 20px;"></div>

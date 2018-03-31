@@ -14,6 +14,8 @@ export class TicketManagerFinanceComponent implements OnInit {
   ticketFinanceList: TicketFinance[] = [];
   showTicketFinanceList: TicketFinance[] = [];
 
+  money = 0;
+
   ngOnInit() {
     this.getUserList();
   }
@@ -28,6 +30,9 @@ export class TicketManagerFinanceComponent implements OnInit {
   initList(ticketFinanceList: TicketFinance[]) {
     this.ticketFinanceList = ticketFinanceList;
     this.showTicketFinanceList = ticketFinanceList;
+    for (let i = 0; i < this.ticketFinanceList.length; i++) {
+      this.money += this.ticketFinanceList[i].cost;
+    }
   }
 
   searchTicketFinance(text: string) {

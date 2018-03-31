@@ -18,6 +18,7 @@ export class TicketManagerExamineService {
 
   getApplicationUrl = 'http://localhost:8080/venue/getApplication';
   approveApplicationUrl = 'http://localhost:8080/venue/approveApplication';
+  allocateTicketUrl = 'http://localhost:8080/ticketManager/allocateTicket';
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
@@ -41,6 +42,14 @@ export class TicketManagerExamineService {
     const data = new URLSearchParams();
     data.append('venueApplicationId', applicationId + '');
     return this.http.post(this.approveApplicationUrl, data, this.options)
+      .toPromise()
+      .then(response => response.json() as ResultMessage)
+      .catch(this.handleError);
+  }
+
+  allocateTicket(): Promise<ResultMessage> {
+    const data = new URLSearchParams();
+    return this.http.post(this.allocateTicketUrl, data, this.options)
       .toPromise()
       .then(response => response.json() as ResultMessage)
       .catch(this.handleError);

@@ -38,6 +38,7 @@ export class RegisterComponent {
       alert('账号名已存在');
     } else {
       alert('注册成功');
+      this.gotoLogin();
     }
   }
 

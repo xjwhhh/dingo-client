@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TicketManagerStatisticsInfoService} from '../statisticsInfo.service';
 import {Venue} from '../../../entity/venue';
-import {User} from '../../../entity/user';
 
 
 @Component({
@@ -10,6 +9,8 @@ import {User} from '../../../entity/user';
   styleUrls: ['./venueTicket.component.css'],
 })
 export class TicketManagerVenueTicketComponent implements OnInit {
+
+
 
   venueList: Venue[];
   showVenueList: Venue[];

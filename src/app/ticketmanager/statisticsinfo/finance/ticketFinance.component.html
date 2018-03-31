@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <p><label>网站盈利:</label>{{money}}</p>
+  </div>
+  <div class="row">
     <div class="col-md-3">
       <input type="text" #text>
     </div>
@@ -7,12 +10,22 @@
       <button type="button" class="btn btn-default" (click)="searchTicketFinance(text.value)">搜索</button>
     </div>
   </div>
+  <div class="row" style="height: 20px"></div>
   <div *ngFor="let ticketFinance of showTicketFinanceList">
+    <div class="finance">
     <div class="row">
-      <label>场馆ID:{{ticketFinance.venueId}}</label>
+      <div class="col-md-3">
+        <p><label>场馆ID:</label>{{ticketFinance.venueId}}</p>
+
+      </div>
+
     </div>
     <div class="row">
-      <label>金额:{{ticketFinance.cost}}</label>
+      <div class="col-md-3">
+        <p><label>金额:</label>{{ticketFinance.cost}}</p>
+
+      </div>
     </div>
+  </div>
   </div>
 </div>

@@ -7,11 +7,13 @@ import {TicketManagerStatisticsInfoService} from './statisticsInfo.service';
 import {TicketManagerUserTicketComponent} from './user/userTicket.component';
 import {TicketManagerVenueTicketComponent} from './venue/venueTicket.component';
 import {TicketManagerFinanceComponent} from './finance/ticketFinance.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
     CommonModule,
     TicketManagerStatisticsInfoRoutingModule,
+    NgxEchartsModule,
   ],
   declarations: [
     TicketManagerStatisticsInfoComponent,
