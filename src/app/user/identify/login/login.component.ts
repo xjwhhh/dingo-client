@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import {IdentifyService} from '../identify.service';
 import {User} from '../../../entity/user';
+import {AppService} from '../../../app.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {User} from '../../../entity/user';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private identifyService: IdentifyService, private router: Router) {
+  constructor(private identifyService: IdentifyService, private router: Router,private appService: AppService) {
   }
 
   ngOnInit() {
@@ -43,6 +44,8 @@ export class LoginComponent implements OnInit {
       this.identifyService.setUserId(user.id);
       // console.log(user);
       // console.log(user.confirmed);
+      this.appService.setType('user');
+      this.appService.setUserId(user.id);
       if (user.confirmed) {
         this.router.navigate(['/identify/userInfo/' + user.id + '/basicInfo']);
       } else {

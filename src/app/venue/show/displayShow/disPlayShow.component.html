@@ -35,7 +35,7 @@
           <p>{{show.startTime}}</p>
         </div>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="progressType==='PRESALE'">
         <div class="col-md-1">
           <button type="button" class="btn btn-default" (click)="gotoCheckTicket(show.id)">检票</button>
         </div>
@@ -45,5 +45,6 @@
       </div>
     </div>
   </div>
+
 
 </div>

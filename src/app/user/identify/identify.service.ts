@@ -3,7 +3,6 @@ import {Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Router} from '@angular/router';
 import {User} from '../../entity/user';
-import {OrderState} from '../../entity/orderstate';
 import {Order} from '../../entity/order';
 import {ResultMessage} from '../../entity/resultmessage';
 import {OrderRecord} from '../../entity/orderRecord';

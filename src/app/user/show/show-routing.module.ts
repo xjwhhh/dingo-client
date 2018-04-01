@@ -15,7 +15,7 @@ const ShowRoutes: Routes = [{
       component: DisPlayShowComponent
     },
     {
-      path: 'disPlay',
+      path: 'display',
       component: DisPlayShowComponent
     },
     {

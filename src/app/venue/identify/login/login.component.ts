@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import {VenueIdentifyService} from '../identify.service';
 import {Venue} from '../../../entity/venue';
+import {AppService} from '../../../app.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {Venue} from '../../../entity/venue';
 export class VenueLoginComponent implements OnInit {
 
 
-  constructor(private identifyService: VenueIdentifyService, private router: Router) {
+  constructor(private identifyService: VenueIdentifyService, private router: Router, private appService: AppService) {
   }
 
   ngOnInit() {
@@ -38,6 +39,7 @@ export class VenueLoginComponent implements OnInit {
     } else {
       alert('登录成功');
       this.identifyService.setVenueId(venue.id);
+      this.appService.setType('venue');
       this.router.navigate(['/venueIdentify/userInfo', venue.id]);
     }
   }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TicketManagerIdentifyService} from '../identify.service';
 import {TicketManager} from '../../../entity/ticketmanager';
+import {AppService} from '../../../app.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {TicketManager} from '../../../entity/ticketmanager';
 export class TicketManagerLoginComponent implements OnInit {
 
 
-  constructor(private identifyService: TicketManagerIdentifyService, private router: Router) {
+  constructor(private identifyService: TicketManagerIdentifyService, private router: Router, private appService: AppService) {
   }
 
   ngOnInit() {
@@ -39,6 +40,7 @@ export class TicketManagerLoginComponent implements OnInit {
       alert('用户名或密码错误');
     } else {
       alert('登录成功');
+      this.appService.setType('ticketManager');
       this.router.navigate(['/ticketManagerIdentify/userInfo', ticketManager.id]);
     }
   }

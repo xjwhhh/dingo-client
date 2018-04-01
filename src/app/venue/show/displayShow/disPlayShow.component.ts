@@ -15,6 +15,8 @@ export class VenueDisPlayShowComponent implements OnInit {
   progressType: string;
   showList: Show[] = [];
   showShowList: Show[] = [];
+  // preSaleList: Show[] = [];
+  // notPreSaleList: Show[] = [];
 
   constructor(private showService: VenueShowService,
               private route: ActivatedRoute,
@@ -37,11 +39,18 @@ export class VenueDisPlayShowComponent implements OnInit {
   setShowList(progressType: string) {
     this.progressType = progressType;
     this.showShowList.splice(0, this.showShowList.length);
+    // this.preSaleList.splice(0, this.preSaleList.length);
+    // this.notPreSaleList.splice(0, this.notPreSaleList.length);
     for (let i = 0; i < this.showList.length; i++) {
       if (this.showList[i].progressType === this.progressType) {
         const show = this.showList[i];
         show.startTime = show.startTime.split(' ')[0];
         this.showShowList.push(show);
+        // if (show.progressType === 'PRESALE') {
+        //   this.preSaleList.push(show);
+        // } else {
+        //   this.notPreSaleList.push(show);
+        // }
       }
     }
   }
