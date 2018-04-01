@@ -59,4 +59,10 @@ export class ShowNoSelectSeatComponent implements OnInit {
   }
 
 
+  goBack() {
+    this.showService.setShowTyep(this.show.showType);
+    this.router.navigate(['/show/' + this.show.showType + '/' + this.userId + '/display']);
+  }
+
+
 }

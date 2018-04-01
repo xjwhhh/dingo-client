@@ -119,5 +119,10 @@ export class ShowSelectSeatComponent implements OnInit {
     }
   }
 
+  goBack() {
+    this.showService.setShowTyep(this.show.showType);
+    this.router.navigate(['/show/' + this.show.showType + '/' + this.userId + '/display']);
+  }
+
 
 }

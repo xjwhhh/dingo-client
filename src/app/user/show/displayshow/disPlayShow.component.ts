@@ -25,7 +25,16 @@ export class DisPlayShowComponent implements OnInit {
     this.getShowList();
   }
 
+  gotoShow(showType: string) {
+    // this.showService.setShowTyep(showType);
+    this.router.navigate(['/show/' + showType + '/' + this.userId + '/display']);
+    this.showType = showType;
+    console.log(showType);
+    this.getShowList();
+  }
+
   getShowList() {
+    console.log(this.showType);
     this.showService.getShowByType(this.showType).then(list => this.showList = list);
   }
 

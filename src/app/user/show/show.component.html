@@ -1,1 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center">
+      <label routerLink="show/流行/{{userId}}/display" routerLinkActive="active" style="font-size: 20px">演出信息</label>
+    </div>
+    <div class="col-md-3" style="text-align: center">
+      <label routerLink="../../../identify/userInfo/{{userId}}/basicInfo" routerLinkActive="active" style="font-size: 20px">基本信息</label>
+    </div>
+    <div class="col-md-3" style="text-align: center">
+      <label routerLink="../../../identify/userInfo/{{userId}}/orderInfo" routerLinkActive="active" style="font-size: 20px">我的订单</label>
+    </div>
+    <div class="col-md-3" style="text-align: center">
+      <label routerLink="../../../identify/userInfo/{{userId}}/statisticsInfo" routerLinkActive="active" style="font-size: 20px">历史统计</label>
+    </div>
+  </div>
+</div>
+
+
+
+
 <router-outlet></router-outlet>

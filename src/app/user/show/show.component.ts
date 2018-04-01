@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {ShowService} from './show.service';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {Show} from '../../entity/show';
@@ -24,17 +24,22 @@ export class ShowComponent implements OnInit {
       this.userId = params['userId'];
       this.showType = params['type'];
     });
-    // this.showType = this.route.snapshot.params['type'];
     console.log(this.userId);
     console.log(this.showType);
     this.showService.setUserId(this.userId);
     this.showService.setShowTyep(this.showType);
-    // this.getShowList();
   }
+
+
+  // gotoShow(showType: string) {
+  //   this.showService.setShowTyep(showType);
+  //   // this.router.navigate(['/show/' + showType + '/' + this.userId + '/display']);
+  //   this.showType = showType;
+  //   this.getShowList();
+  // }
 
   // getShowList() {
   //   this.showService.getShowByType(this.showType).then(list => this.showList = list);
   // }
-
 
 }
