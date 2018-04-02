@@ -29,11 +29,52 @@
         <p>剩余座位数:{{show.currentSeats}}</p>
       </div>
       <div class="row">
+        <div class="col-md-4">
+          <label>一等座:</label>
+        </div>
+        <div class="col-md-">
+          <p>{{firstSeatNumber}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>二等座:</label>
+        </div>
+        <div class="col-md-">
+          <p>{{secondSeatNumber}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>三等座:</label>
+        </div>
+        <div class="col-md-">
+          <p>{{thirdSeatNumber}}</p>
+        </div>
+      </div>
+      <div class="row" style="height: 20px;"></div>
+      <div class="row">
+        <div class="col-md-2">
+          <label>账号：</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" #account>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label>密码：</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" #password>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-2">
           <label>一等座:</label>
         </div>
         <div class="col-md-10">
-          <input type="text" #firstNumber>
+          <input type="number" min="0" max="{{firstSeatNumber}}" value="0" #firstNumber>
         </div>
       </div>
       <div class="row">
@@ -41,7 +82,7 @@
           <label>二等座:</label>
         </div>
         <div class="col-md-10">
-          <input type="text" #secondNumber>
+          <input type="number" min="0" max="{{secondNumber}}" value="0" #secondNumber>
         </div>
       </div>
       <div class="row">
@@ -49,13 +90,14 @@
           <label>三等座:</label>
         </div>
         <div class="col-md-10">
-          <input type="text" #thirdNumber>
+          <input type="number" min="0" max="{{thirdSeatNumber}}" value="0" #thirdNumber>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6" align="center">
           <button type="button" class="btn btn-default"
-                  (click)="buyTickets(firstNumber.value,secondNumber.value,thirdNumber.value)">确认购买
+                  (click)="buyTickets(firstNumber.value,secondNumber.value,thirdNumber.value,account.value,password.value)">
+            确认购买
           </button>
         </div>
       </div>

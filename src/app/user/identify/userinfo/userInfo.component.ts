@@ -14,8 +14,9 @@ export class UserInfoComponent implements OnInit {
 
   constructor(private identifyService: IdentifyService, private route: ActivatedRoute, private router: Router) {
   }
+
   ngOnInit() {
 
-    this.userId=this.identifyService.getUserId();
+    this.userId = this.identifyService.getUserId();
   }
 }

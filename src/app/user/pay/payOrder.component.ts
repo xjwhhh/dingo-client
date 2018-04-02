@@ -68,15 +68,17 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
   setUser(user: User) {
     this.user = user;
     for (let i = 0; i < user.couponList.length; i++) {
-      if (user.couponList[i].type === 1) {
-        this.firstCouponNumber++;
-        // this.firstExist = true;
-      } else if (user.couponList[i].type === 2) {
-        this.secondCouponNumber++;
-        // this.secondExist = true;
-      } else if (user.couponList[i].type === 3) {
-        this.thirdCouponNumber++;
-        // this.thirdExist = true;
+      if (user.couponList[i].isUsed === false) {
+        if (user.couponList[i].type === 1) {
+          this.firstCouponNumber++;
+          // this.firstExist = true;
+        } else if (user.couponList[i].type === 2) {
+          this.secondCouponNumber++;
+          // this.secondExist = true;
+        } else if (user.couponList[i].type === 3) {
+          this.thirdCouponNumber++;
+          // this.thirdExist = true;
+        }
       }
     }
   }
@@ -102,7 +104,23 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   setCouponType(couponType: number) {
-    this.couponType = couponType;
+    switch (this.couponType) {
+      case 1:
+        if (this.firstCouponNumber > 0) {
+          this.couponType = couponType;
+        }
+        break;
+      case 2:
+        if (this.secondCouponNumber > 0) {
+          this.couponType = couponType;
+        }
+        break;
+      case 3:
+        if (this.thirdCouponNumber > 0) {
+          this.couponType = couponType;
+        }
+        break;
+    }
   }
 
   pay() {
@@ -117,7 +135,7 @@ export class PayOrderComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log(result);
     if (result.toString() === 'SUCCESS') {
       alert('付款成功');
-      // this.router.navigate(['../pay', orderId]);
+      this.router.navigate(['../show/流行/' + this.userId + '/display']);
     } else {
       alert('付款失败，请稍后重试');
     }

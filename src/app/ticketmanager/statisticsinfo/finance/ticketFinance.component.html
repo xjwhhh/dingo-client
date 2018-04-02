@@ -13,19 +13,19 @@
   <div class="row" style="height: 20px"></div>
   <div *ngFor="let ticketFinance of showTicketFinanceList">
     <div class="finance">
-    <div class="row">
-      <div class="col-md-3">
-        <p><label>场馆ID:</label>{{ticketFinance.venueId}}</p>
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>场馆ID:</label>{{ticketFinance.venueId}}</p>
+
+        </div>
 
       </div>
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>金额:</label>{{ticketFinance.cost}}</p>
 
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <p><label>金额:</label>{{ticketFinance.cost}}</p>
-
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </div>

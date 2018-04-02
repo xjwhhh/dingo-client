@@ -11,7 +11,6 @@ import {Venue} from '../../../entity/venue';
 export class TicketManagerVenueTicketComponent implements OnInit {
 
 
-
   venueList: Venue[];
   showVenueList: Venue[];
 

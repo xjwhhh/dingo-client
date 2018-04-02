@@ -39,12 +39,14 @@ export class UserBasicInfoComponent implements OnInit {
   setUser(user: User) {
     this.user = user;
     for (let i = 0; i < user.couponList.length; i++) {
-      if (user.couponList[i].type === 1) {
-        this.firstCouponNumber++;
-      } else if (user.couponList[i].type === 2) {
-        this.secondCouponNumber++;
-      } else if (user.couponList[i].type === 3) {
-        this.thirdCouponNumber++;
+      if (user.couponList[i].isUsed === false) {
+        if (user.couponList[i].type === 1) {
+          this.firstCouponNumber++;
+        } else if (user.couponList[i].type === 2) {
+          this.secondCouponNumber++;
+        } else if (user.couponList[i].type === 3) {
+          this.thirdCouponNumber++;
+        }
       }
     }
   }

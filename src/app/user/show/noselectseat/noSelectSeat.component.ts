@@ -15,7 +15,11 @@ export class ShowNoSelectSeatComponent implements OnInit {
   showId: number;
   show: Show = new Show();
 
-  seatlist: ShowSeat[] = [];
+  seatList: ShowSeat[] = [];
+
+  firstSeatNumber = 0;
+  secondSeatNumber = 0;
+  thirdSeatNumber = 0;
 
   constructor(private showService: ShowService,
               private route: ActivatedRoute,
@@ -31,15 +35,42 @@ export class ShowNoSelectSeatComponent implements OnInit {
   }
 
   getShow() {
-    this.showService.getShowById(this.showId).then(show => this.show = show);
+    this.showService.getShowById(this.showId).then(show => this.setShow(show));
   }
 
-  buyTickets(firstNumber: number, secondNumber: number, thirdNumber: number) {
-    if (firstNumber + secondNumber + thirdNumber > 20) {
-      alert('立即购票每单最多只可选择20张');
+  setShow(show: Show) {
+    this.show = show;
+    this.seatList = this.show.seatList;
+    for (let i = 0; i < this.seatList.length; i++) {
+      if (this.seatList[i].booked === false) {
+        if (this.seatList[i].level === '一等座') {
+          this.firstSeatNumber++;
+        } else if (this.seatList[i].level === '二等座') {
+          this.secondSeatNumber++;
+        } else {
+          this.thirdSeatNumber++;
+        }
+      }
+    }
+  }
+
+  buyTickets(firstNumber: string, secondNumber: string, thirdNumber: string) {
+    if (parseInt(firstNumber, 0) > this.firstSeatNumber
+      || parseInt(secondNumber, 0) > this.secondSeatNumber
+      || parseInt(thirdNumber, 0) > this.thirdSeatNumber) {
+      alert('座位数量不足');
     } else {
-      this.showService.reserveNoChoose(firstNumber, secondNumber, thirdNumber, this.userId, this.show.venueId, this.showId)
-        .then(orderId => this.checkReserveResult(orderId));
+      console.log(firstNumber + secondNumber + thirdNumber);
+      if (parseInt(firstNumber, 0) + parseInt(secondNumber, 0) + parseInt(thirdNumber, 0) > 20) {
+        alert('立即购票每单最多只可选择20张');
+      } else if (parseInt(firstNumber, 0) + parseInt(secondNumber, 0) + parseInt(thirdNumber, 0) <= 0) {
+        alert('至少购买一张票');
+      } else {
+        this.showService.reserveNoChoose(parseInt(firstNumber, 0),
+          parseInt(firstNumber, 0), parseInt(thirdNumber, 0),
+          this.userId, this.show.venueId, this.showId)
+          .then(orderId => this.checkReserveResult(orderId));
+      }
     }
   }
 
@@ -52,7 +83,7 @@ export class ShowNoSelectSeatComponent implements OnInit {
     console.log(orderId);
     if (orderId !== -1) {
       alert('订票成功');
-      // this.router.navigate(['../pay', orderId]);
+      this.router.navigate(['../pay', orderId]);
     } else {
       alert('订票失败，请刷新重试');
     }

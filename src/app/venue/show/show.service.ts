@@ -118,13 +118,13 @@ export class VenueShowService {
       .catch(this.handleError);
   }
 
-  offLineBuyTicket(one: number, two: number, three: number, userAccount: number, userPassword: number, venueId: number, showId: number): Promise<ResultMessage> {
+  offLineBuyTicket(one: number, two: number, three: number, userAccount: string, userPassword: string, venueId: number, showId: number): Promise<ResultMessage> {
     const data = new URLSearchParams();
     data.append('one', one + '');
     data.append('two', two + '');
     data.append('three', three + '');
-    data.append('userAccount', userAccount + '');
-    data.append('userPassword', userPassword + '');
+    data.append('userAccount', userAccount);
+    data.append('userPassword', userPassword);
     data.append('venueId', venueId + '');
     data.append('showId', showId + '');
     return this.http.post(this.offLineBuyTicketUrl, data, this.options)

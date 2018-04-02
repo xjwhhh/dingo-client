@@ -36,7 +36,7 @@
           <label>一等座:</label>
         </div>
         <div class="col-md-">
-          <input type="text" #firstNumber>
+          <p>{{firstSeatNumber}}</p>
         </div>
       </div>
       <div class="row">
@@ -44,7 +44,7 @@
           <label>二等座:</label>
         </div>
         <div class="col-md-">
-          <input type="text" #secondNumber>
+          <p>{{secondSeatNumber}}</p>
         </div>
       </div>
       <div class="row">
@@ -52,7 +52,32 @@
           <label>三等座:</label>
         </div>
         <div class="col-md-">
-          <input type="text" #thirdNumber>
+          <p>{{thirdSeatNumber}}</p>
+        </div>
+      </div>
+      <div class="row" style="height: 20px;"></div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>一等座:</label>
+        </div>
+        <div class="col-md-">
+          <input type="number" max="{{firstSeatNumber}}" min="0" value="0" #firstNumber>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>二等座:</label>
+        </div>
+        <div class="col-md-">
+          <input type="number" max="{{secondSeatNumber}}" min="0" value="0" #secondNumber>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>三等座:</label>
+        </div>
+        <div class="col-md-">
+          <input type="number" max="{{thirdSeatNumber}}" min="0" value="0" #thirdNumber>
         </div>
       </div>
       <div class="row">

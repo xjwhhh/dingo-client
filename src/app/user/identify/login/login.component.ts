@@ -13,7 +13,7 @@ import {AppService} from '../../../app.service';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private identifyService: IdentifyService, private router: Router,private appService: AppService) {
+  constructor(private identifyService: IdentifyService, private router: Router, private appService: AppService) {
   }
 
   ngOnInit() {

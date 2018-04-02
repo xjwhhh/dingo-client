@@ -19,22 +19,22 @@
 <div class="container">
   <div *ngFor="let earning of showEarningList">
     <div class="earning">
-    <div class="row">
-      <div class="col-md-3">
-        <p><label>演出收益ID:</label>{{earning.id}}</p>
+      <div class="row">
+        <div class="col-md-3">
+          <p><label>演出收益ID:</label>{{earning.id}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>演出ID:</label>{{earning.showId}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><label>线上收益:</label>{{earning.onlineEarning}}</p>
+        </div>
       </div>
-      <div class="col-md-3">
-        <p><label>演出ID:</label>{{earning.showId}}</p>
-      </div>
-      <div class="col-md-3">
-        <p><label>线上收益:</label>{{earning.onlineEarning}}</p>
+      <div class="row">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-default" (click)="doSettle(earning.id)">结算</button>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-      <button type="button" class="btn btn-default"  (click)="doSettle(earning.id)">结算</button>
-      </div>
-    </div>
-  </div>
   </div>
 </div>
