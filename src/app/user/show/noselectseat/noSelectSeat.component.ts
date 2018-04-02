@@ -83,7 +83,7 @@ export class ShowNoSelectSeatComponent implements OnInit {
     console.log(orderId);
     if (orderId !== -1) {
       alert('订票成功');
-      this.router.navigate(['../pay', orderId]);
+      this.router.navigate(['../pay/' + '/' + this.userId + '/' + orderId]);
     } else {
       alert('订票失败，请刷新重试');
     }
